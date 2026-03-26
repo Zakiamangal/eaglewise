@@ -1,6 +1,7 @@
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
+import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -41,7 +42,10 @@ export default function FaqPage() {
         <div className="space-y-4">
           {faqs.map((item) => (
             <article key={item.question} className="rounded-2xl border border-border bg-surface p-6">
-              <h3 className="text-lg font-semibold">{item.question}</h3>
+              <div className="flex items-center gap-3">
+                <HelpCircle className="h-5 w-5 text-[#EB8B2E]" />
+                <h3 className="text-lg font-semibold">{item.question}</h3>
+              </div>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.answer}</p>
             </article>
           ))}

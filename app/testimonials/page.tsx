@@ -1,6 +1,7 @@
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
+import { Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -31,6 +32,7 @@ export default function TestimonialsPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {testimonials.map((item) => (
             <article key={item.author} className="rounded-2xl border border-border bg-surface p-6">
+              <Quote className="h-6 w-6 text-[#EB8B2E]" />
               <p className="text-base leading-7 text-muted-foreground">
                 &quot;{item.quote}&quot;
               </p>

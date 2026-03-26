@@ -1,6 +1,7 @@
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { companyInfo } from "@/lib/site";
+import { Mail, MapPin, Phone, Globe, Send } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -12,7 +13,10 @@ export default function ContactPage() {
       >
         <div className="grid gap-4 lg:grid-cols-2">
           <article className="rounded-2xl border border-border bg-surface p-6 md:p-8">
-            <h3 className="text-xl font-semibold">Send Inquiry</h3>
+            <div className="flex items-center gap-3">
+              <Send className="h-5 w-5 text-[#EB8B2E]" />
+              <h3 className="text-xl font-semibold">Send Inquiry</h3>
+            </div>
             <form className="mt-5 space-y-4">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-medium">
@@ -63,28 +67,70 @@ export default function ContactPage() {
             <h3 className="text-xl font-semibold">Company Details</h3>
             <ul className="mt-5 space-y-3 text-sm leading-7 text-muted-foreground">
               <li>
-                <span className="font-semibold text-foreground">Company:</span>{" "}
-                {companyInfo.name}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <Globe className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Company:</span>{" "}
+                    {companyInfo.name}
+                  </span>
+                </div>
               </li>
               <li>
-                <span className="font-semibold text-foreground">Location:</span>{" "}
-                {companyInfo.location}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <MapPin className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Location:</span>{" "}
+                    {companyInfo.location}
+                  </span>
+                </div>
               </li>
               <li>
-                <span className="font-semibold text-foreground">Phone:</span>{" "}
-                {companyInfo.phone}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <Phone className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Phone:</span>{" "}
+                    {companyInfo.phone}
+                  </span>
+                </div>
               </li>
               <li>
-                <span className="font-semibold text-foreground">Email:</span>{" "}
-                {companyInfo.email}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <Mail className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Email:</span>{" "}
+                    {companyInfo.email}
+                  </span>
+                </div>
               </li>
               <li>
-                <span className="font-semibold text-foreground">Address:</span>{" "}
-                {companyInfo.address}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <MapPin className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Address:</span>{" "}
+                    {companyInfo.address}
+                  </span>
+                </div>
               </li>
               <li>
-                <span className="font-semibold text-foreground">Website:</span>{" "}
-                {companyInfo.website}
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <Globe className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">Website:</span>{" "}
+                    {companyInfo.website}
+                  </span>
+                </div>
               </li>
             </ul>
             <p className="mt-4 rounded-xl bg-surface-alt p-4 text-xs text-muted-foreground">

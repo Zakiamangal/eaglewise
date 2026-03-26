@@ -3,6 +3,15 @@ import Link from "next/link";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
+import {
+  Building2,
+  Handshake,
+  ShieldCheck,
+  CalendarDays,
+  Layers,
+  Globe,
+  ArrowRight,
+} from "lucide-react";
 
 const divisions = [
   "General Trading & Wholesale",
@@ -48,7 +57,9 @@ export default function Home() {
                     href="/contact"
                     className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95"
                   >
-                    Sign up
+                    <span className="inline-flex items-center gap-2">
+                      Sign up <ArrowRight className="h-4 w-4" />
+                    </span>
                   </Link>
                   <Link
                     href="/services"
@@ -66,60 +77,105 @@ export default function Home() {
           </div>
 
         <div className="container-shell">
-          <div className="relative z-10 -mt-8 grid gap-3 rounded-3xl border border-border bg-surface p-4 shadow-[0_16px_35px_rgba(7,13,26,0.08)] md:grid-cols-3 md:gap-4 md:p-5">
-              <article className="rounded-2xl bg-surface-alt p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  Established
-                </p>
-                <p className="mt-2 text-2xl font-semibold">March 2025</p>
+          <div className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] border border-border/40 bg-surface px-6 py-8 shadow-none md:-mt-16 md:px-10 md:py-8">
+            <div className="grid grid-cols-1 gap-6 divide-y divide-border/40 md:grid-cols-3 md:gap-0 md:divide-x md:divide-y-0">
+              <article className="flex flex-col items-center pt-4 first:pt-0 md:items-start md:px-8 md:py-0 md:first:pl-0">
+                <div className="flex items-center gap-2.5">
+                  <CalendarDays className="h-5 w-5 text-[#EB8B2E]" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                    Established
+                  </p>
+                </div>
+                <p className="mt-2.5 text-xl font-bold text-foreground md:text-2xl">March 2025</p>
               </article>
-              <article className="rounded-2xl bg-surface-alt p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  Core Divisions
-                </p>
-                <p className="mt-2 text-2xl font-semibold">3 Business Units</p>
+              <article className="flex flex-col items-center pt-6 md:items-start md:px-8 md:py-0">
+                <div className="flex items-center gap-2.5">
+                  <Layers className="h-5 w-5 text-[#EB8B2E]" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                    Core Divisions
+                  </p>
+                </div>
+                <p className="mt-2.5 text-xl font-bold text-foreground md:text-2xl">3 Business Units</p>
               </article>
-              <article className="rounded-2xl bg-surface-alt p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  Regional Reach
-                </p>
-                <p className="mt-2 text-2xl font-semibold">34 Provinces Network</p>
+              <article className="flex flex-col items-center pt-6 md:items-start md:px-8 md:py-0 md:last:pr-0">
+                <div className="flex items-center gap-2.5">
+                  <Globe className="h-5 w-5 text-[#EB8B2E]" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                    Regional Reach
+                  </p>
+                </div>
+                <p className="mt-2.5 text-xl font-bold text-foreground md:text-2xl">34 Provinces Network</p>
               </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <Section
-        eyebrow="Overview"
-        title="Built for long-term partnerships"
-        description="Eaglewise bridges opportunities between international suppliers and regional markets, with a focus on quality, transparency, and reliable delivery."
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {highlights.map((item) => (
-            <article key={item} className="soft-card p-6">
-              <p className="text-base leading-7">{item}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <div className="relative overflow-hidden">
+        {/* Warm orange glow behind content (kept subtle) */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `
+              radial-gradient(
+                circle at top right,
+                rgba(255, 140, 60, 0.14),
+                transparent 70%
+              )
+            `,
+            filter: "blur(60px)",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
 
-      <Section
-        eyebrow="Core Divisions"
-        title="How we create business value"
-        description="Our business model combines distribution capabilities, online marketplace expansion, and expert consultancy support."
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {divisions.map((item) => (
-            <article key={item} className="soft-card p-6">
-              <h3 className="text-xl font-semibold">{item}</h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Practical, execution-focused support tailored for companies operating in
-                the UAE and international markets.
-              </p>
-            </article>
-          ))}
+        <div className="relative z-10">
+          <Section
+            eyebrow="Overview"
+            title="Built for long-term partnerships"
+            description="Eaglewise bridges opportunities between international suppliers and regional markets, with a focus on quality, transparency, and reliable delivery."
+          >
+            <div className="grid gap-4 md:grid-cols-3">
+              {highlights.map((item, idx) => {
+                const Icon =
+                  idx === 0 ? ShieldCheck : idx === 1 ? Handshake : Building2;
+                return (
+                  <article key={item} className="soft-card p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <Icon className="h-5 w-5 text-[#EB8B2E]" />
+                    </div>
+                    <p className="text-base leading-7">{item}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </Section>
+
+          <Section
+            eyebrow="Core Divisions"
+            title="How we create business value"
+            description="Our business model combines distribution capabilities, online marketplace expansion, and expert consultancy support."
+          >
+            <div className="grid gap-4 md:grid-cols-3">
+              {divisions.map((item, idx) => {
+                const Icon =
+                  idx === 0 ? Building2 : idx === 1 ? Globe : Handshake;
+                return (
+                  <article key={item} className="soft-card p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <Icon className="h-5 w-5 text-[#EB8B2E]" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{item}</h3>
+                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                      Practical, execution-focused support tailored for companies
+                      operating in the UAE and international markets.
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </Section>
         </div>
-      </Section>
+      </div>
 
       <section className="border-t border-border/30 bg-transparent py-6 md:py-8">
         <div className="container-shell">
