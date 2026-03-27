@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <SiteShell>
       <section className="pb-8 pt-0">
-        <div className="relative h-[580px] overflow-hidden bg-secondary md:h-[680px]">
+        <div className="relative h-[620px] overflow-hidden bg-secondary md:h-[680px]">
           {/* Hero Image */}
           <motion.div
             initial={{ scale: 1.05, opacity: 0 }}
@@ -107,18 +107,18 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 variants={staggerContainer}
-                className="max-w-2xl"
+                className="mx-auto max-w-2xl text-center md:mx-0 md:text-left"
               >
                 <motion.p
                   variants={fadeInUp}
-                  className="mb-4 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#EB8B2E] backdrop-blur-md border border-white/5"
+                  className="mb-4 inline-flex rounded-full border border-white/5 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#EB8B2E] backdrop-blur-md"
                 >
                   Eaglewise Business Consultancy LLC-FZ
                 </motion.p>
                 
                 <motion.h1
                   variants={fadeInUp}
-                  className="text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-[4rem]"
+                  className="text-[2.35rem] font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-[4rem]"
                 >
                   Award-winning business support, <br />
                   <span className="text-white/70">here in the UAE.</span>
@@ -126,26 +126,37 @@ export default function Home() {
                 
                 <motion.p
                   variants={fadeInUp}
-                  className="mt-6 max-w-xl text-lg leading-relaxed text-white/80"
+                  className="mt-5 max-w-xl text-xl leading-relaxed text-white/80 md:mt-6 md:text-lg"
                 >
                   Trade confidently with a partner focused on general trading, e-commerce,
                   and professional consultancy execution for regional expansion.
                 </motion.p>
                 
-                <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap items-center gap-4">
+                <motion.div
+                  variants={fadeInUp}
+                  className="mt-8 flex flex-wrap items-center justify-center gap-3 md:mt-10 md:justify-start md:gap-4"
+                >
                   <Link
                     href="/contact"
-                    className="group relative inline-flex h-14 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-8 text-base font-semibold text-white transition-all hover:bg-[#d97a22]"
+                    className="group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-6 text-base font-semibold text-white transition-all hover:bg-[#d97a22] md:h-14 md:px-8"
                   >
                     <span>Contact Us</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/services"
-                    className="inline-flex h-14 items-center justify-center rounded-full border border-white/10 bg-white/10 px-8 text-base font-semibold !text-gray-300 backdrop-blur-md transition-all hover:bg-white/20 hover:!text-white"
+                    className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/10 px-6 text-base font-semibold !text-gray-300 backdrop-blur-md transition-all hover:bg-white/20 hover:!text-white md:h-14 md:px-8"
                   >
                     View Services
                   </Link>
+                </motion.div>
+
+                <motion.div
+                  variants={fadeInUp}
+                  className="mt-5 flex items-center gap-2 text-sm text-gray-200 md:hidden"
+                >
+                  <Award className="h-4 w-4 text-[#EB8B2E]" />
+                  <span>Authorized and registered in the UAE</span>
                 </motion.div>
                 
               </motion.div>
@@ -155,7 +166,7 @@ export default function Home() {
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
-            className="pointer-events-none absolute inset-x-0 bottom-24 z-20 flex w-full flex-col items-center justify-center gap-2 text-center text-sm font-medium text-white/70 md:bottom-28"
+            className="pointer-events-none absolute inset-x-0 bottom-24 z-20 hidden w-full flex-col items-center justify-center gap-2 text-center text-sm font-medium text-white/70 md:flex md:bottom-28"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#EB8B2E]">
               Eaglewise Business Consultancy LLC-FZ
