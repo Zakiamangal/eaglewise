@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubpageHero } from "@/components/subpage-hero";
 import { companyInfo } from "@/lib/site";
 import { Mail, MapPin, Phone, Globe, Send } from "lucide-react";
+import { LinkedinIcon } from "@/components/linkedin-icon";
 
 export default function ProfessionalContactPage() {
   return (
@@ -103,7 +104,10 @@ export default function ProfessionalContactPage() {
                     <Phone className="h-4 w-4" />
                   </span>
                   <span>
-                    <span className="font-semibold text-foreground">Phone:</span> {companyInfo.phone}
+                    <span className="font-semibold text-foreground">Phone:</span>{" "}
+                    <a href={`tel:${companyInfo.phoneTel}`} className="text-[#EB8B2E] underline-offset-2 hover:underline">
+                      {companyInfo.phone}
+                    </a>
                   </span>
                 </div>
               </li>
@@ -113,13 +117,16 @@ export default function ProfessionalContactPage() {
                     <Mail className="h-4 w-4" />
                   </span>
                   <span>
-                    <span className="font-semibold text-foreground">Email:</span> {companyInfo.email}
+                    <span className="font-semibold text-foreground">Email:</span>{" "}
+                    <a href={`mailto:${companyInfo.email}`} className="text-[#EB8B2E] underline-offset-2 hover:underline">
+                      {companyInfo.email}
+                    </a>
                   </span>
                 </div>
               </li>
               <li>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
                     <MapPin className="h-4 w-4" />
                   </span>
                   <span>
@@ -133,13 +140,39 @@ export default function ProfessionalContactPage() {
                     <Globe className="h-4 w-4" />
                   </span>
                   <span>
-                    <span className="font-semibold text-foreground">Website:</span> {companyInfo.website}
+                    <span className="font-semibold text-foreground">Website:</span>{" "}
+                    <a
+                      href={companyInfo.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#EB8B2E] underline-offset-2 hover:underline"
+                    >
+                      eaglewisebiz.com
+                    </a>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                    <LinkedinIcon className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-foreground">LinkedIn:</span>{" "}
+                    <a
+                      href={companyInfo.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#EB8B2E] underline-offset-2 hover:underline"
+                    >
+                      Eagle Wise Business Consultancy (UAE)
+                    </a>
                   </span>
                 </div>
               </li>
             </ul>
             <p className="mt-4 rounded-xl bg-surface-alt p-4 text-xs text-muted-foreground">
-              Placeholder contact fields can be replaced with official details from your client.
+              Full office address will be added when confirmed.
             </p>
           </article>
         </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Globe, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { LinkedinIcon } from "@/components/linkedin-icon";
 import { companyInfo, getSiteMode, modeConfig } from "@/lib/site";
 
 export function SiteFooter() {
@@ -65,19 +66,45 @@ export function SiteFooter() {
           </h4>
           <ul className="mt-4 space-y-3 text-sm text-secondary-foreground/90">
             <li className="flex items-center gap-3">
-              <Globe className="h-4 w-4 text-[#EB8B2E]" />
+              <Globe className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
               <span>Location: {companyInfo.location}</span>
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4 text-[#EB8B2E]" />
-              <span>Phone: {companyInfo.phone}</span>
+              <Phone className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
+              <a href={`tel:${companyInfo.phoneTel}`} className="transition hover:text-[#EB8B2E]">
+                Phone: {companyInfo.phone}
+              </a>
             </li>
             <li className="flex items-center gap-3">
-              <Mail className="h-4 w-4 text-[#EB8B2E]" />
-              <span>Email: {companyInfo.email}</span>
+              <Mail className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
+              <a href={`mailto:${companyInfo.email}`} className="transition hover:text-[#EB8B2E]">
+                Email: {companyInfo.email}
+              </a>
             </li>
             <li className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-[#EB8B2E]" />
+              <Globe className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
+              <a
+                href={companyInfo.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-[#EB8B2E]"
+              >
+                Website: eaglewisebiz.com
+              </a>
+            </li>
+            <li className="flex items-center gap-3">
+              <LinkedinIcon className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
+              <a
+                href={companyInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-[#EB8B2E]"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#EB8B2E]" />
               <span>Address: {companyInfo.address}</span>
             </li>
           </ul>

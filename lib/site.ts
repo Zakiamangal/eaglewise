@@ -4,11 +4,16 @@ export const companyInfo = {
   name: "Eaglewise Business Consultancy LLC-FZ",
   location: "United Arab Emirates",
   established: "March 2025",
-  phone: "To be updated",
-  email: "To be updated",
+  /** Display format */
+  phone: "+971 555 953 221",
+  /** Use in tel: links (no spaces) */
+  phoneTel: "+971555953221",
+  email: "ceo@eaglewisebiz.com",
+  /** Full postal / office line — client to confirm */
   address: "To be updated",
-  website: "To be updated",
-};
+  website: "https://www.eaglewisebiz.com",
+  linkedin: "https://www.linkedin.com/company/eagle-wise-business-consultancy-uae/",
+} as const;
 
 export type NavItem = { href: string; label: string };
 
@@ -40,8 +45,8 @@ export const modeConfig = {
   trading: {
     id: "trading" as const,
     label: "Trading & Partners",
-    tabLabel: "trading & partner",
-    switcherShortLabel: "trading & partner",
+    tabLabel: "trading & partners",
+    switcherShortLabel: "trading & partners",
     basePath: "/trading",
     homeHref: "/trading",
     navLinks: [
