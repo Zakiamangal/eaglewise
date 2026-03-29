@@ -4,110 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import { navLinks } from "@/lib/site";
-
-const navMenus: Record<string, { href: string; label: string; description: string }[]> = {
-  "/about": [
-    {
-      href: "/about#about-overview",
-      label: "Company Overview",
-      description: "Who Eaglewise is and what we do.",
-    },
-    {
-      href: "/about#vision-mission",
-      label: "Vision & Mission",
-      description: "See our direction and core objectives.",
-    },
-    {
-      href: "/about#company-values",
-      label: "Company Values",
-      description: "Integrity, quality, partnership and innovation.",
-    },
-  ],
-  "/services": [
-    {
-      href: "/services#professional-services",
-      label: "Professional Services",
-      description: "Explore financial, tax, and advisory services.",
-    },
-    {
-      href: "/services#how-we-work",
-      label: "How We Work",
-      description: "Discovery, planning, and ongoing support model.",
-    },
-    {
-      href: "/services#request-consultation",
-      label: "Request Consultation",
-      description: "Jump directly to consultation CTA section.",
-    },
-  ],
-  "/markets": [
-    {
-      href: "/markets#markets-overview",
-      label: "Markets Overview",
-      description: "Trading, distribution and channel focus.",
-    },
-    {
-      href: "/markets#regional-network",
-      label: "Regional Network",
-      description: "Partner network and market coverage details.",
-    },
-    {
-      href: "/markets#markets-cta",
-      label: "Partnership CTA",
-      description: "Start a distribution partnership discussion.",
-    },
-  ],
-  "/testimonials": [
-    {
-      href: "/testimonials#client-feedback",
-      label: "Client Feedback",
-      description: "Read trusted testimonial highlights.",
-    },
-    {
-      href: "/testimonials#trusted-metrics",
-      label: "Trust Metrics",
-      description: "Core credibility and business reach stats.",
-    },
-    {
-      href: "/testimonials#testimonials-cta",
-      label: "Share Your Story",
-      description: "CTA section for new client engagement.",
-    },
-  ],
-  "/faq": [
-    {
-      href: "/faq#faq-list",
-      label: "FAQ List",
-      description: "Most common business and service questions.",
-    },
-    {
-      href: "/faq#faq-cta",
-      label: "Contact for More",
-      description: "Direct link to the CTA support section.",
-    },
-  ],
-  "/contact": [
-    {
-      href: "/contact#contact-main",
-      label: "Send Inquiry",
-      description: "Go directly to the inquiry form section.",
-    },
-    {
-      href: "/contact#contact-main",
-      label: "Company Details",
-      description: "View location, phone, email, and address.",
-    },
-  ],
-};
+import { getSiteMode, modeConfig, navMenusByMode } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const mode = getSiteMode(pathname);
+  const cfg = modeConfig[mode];
+  const navMenus = navMenusByMode[mode];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-white">
+    <header className="border-b border-border/70 bg-white">
       <div className="container-shell flex min-h-[72px] items-center justify-between gap-6 py-2">
-        <Link href="/" className="shrink-0 leading-none">
+        <Link href={cfg.homeHref} className="shrink-0 leading-none">
           <Image
             src="/ebc-logo.png"
             alt="Eaglewise Business Consultancy"
@@ -119,8 +27,8 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden min-w-0 items-center gap-1 lg:flex">
-          {navLinks.map((item) => {
-            const isActive = pathname === item.href;
+          {cfg.navLinks.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             const menuItems = navMenus[item.href] ?? [];
 
             if (menuItems.length > 0) {
@@ -137,7 +45,6 @@ export function SiteHeader() {
                     {item.label}
                   </Link>
 
-                  {/* Hover bridge prevents dropdown from disappearing between trigger and card */}
                   <div className="absolute inset-x-0 top-full h-5" />
 
                   <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 translate-y-2 rounded-[1.6rem] border border-border/60 bg-surface/95 p-6 opacity-0 shadow-[0_16px_40px_rgba(7,13,26,0.12)] backdrop-blur-sm transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
@@ -159,9 +66,7 @@ export function SiteHeader() {
                           className="rounded-xl px-3 py-3 transition hover:bg-surface-alt"
                         >
                           <p className="text-sm font-semibold text-foreground">{menuItem.label}</p>
-                          <p className="mt-1 text-xs text-muted-foreground">
-                            {menuItem.description}
-                          </p>
+                          <p className="mt-1 text-xs text-muted-foreground">{menuItem.description}</p>
                         </Link>
                       ))}
                     </div>
@@ -188,16 +93,16 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/services"
+            href={cfg.secondaryCta.href}
             className="hidden rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-surface-alt md:inline-flex"
           >
-            Our Services
+            {cfg.secondaryCta.label}
           </Link>
           <Link
-            href="/contact"
+            href={cfg.primaryCta.href}
             className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-95"
           >
-            Contact Us
+            {cfg.primaryCta.label}
           </Link>
         </div>
       </div>
