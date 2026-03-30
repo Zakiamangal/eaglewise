@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
@@ -68,6 +69,37 @@ export default function TradingProductsPage() {
           <p className="mt-6 rounded-2xl border border-dashed border-neutral-300/90 bg-neutral-50/80 p-5 text-sm leading-relaxed text-muted-foreground md:p-6 md:text-base">
             Exports to Afghanistan are supported through Khan Naseri Trading Company for nationwide wholesale
             distribution.
+          </p>
+        </Section>
+
+        <Section
+          id="shavele"
+          className="bg-neutral-50/80"
+          eyebrow="Own brand"
+          title="Shavele SkinCare"
+          description="High-performance hair and skincare designed for modern lifestyles and desert climates. Developed by Eaglewise, estd 2025."
+        >
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image src="/trading/3.jpg" alt="Shavele SkinCare brand" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image src="/trading/4.jpg" alt="Shavele serum bottle" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image src="/trading/5.jpg" alt="Shavele moisturizer cream" fill className="object-cover" />
+            </div>
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+              <Image src="/trading/2.jpg" alt="Shavele branding and packaging" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+              <Image src="/trading/IMG_0354.jpg" alt="Shavele Face Moisturizer — Pure comfort in harmony with summer radiance" fill className="object-cover" />
+            </div>
+          </div>
+          <p className="mt-6 rounded-2xl border border-dashed border-neutral-300/90 bg-white p-5 text-sm leading-relaxed text-muted-foreground md:p-6 md:text-base">
+            Shavele is Eaglewise&apos;s own skincare line — formulated for the UAE climate, available through our e-commerce channels and wholesale distribution network.
           </p>
         </Section>
 
