@@ -39,8 +39,8 @@ export function CtaStrip({
             imageSrc ? "grid gap-0 md:min-h-[min(520px,56vh)] md:grid-cols-12" : "px-6 py-10 md:px-10 md:py-12"
           }`}
         >
-          <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#EB8B2E]/15 blur-3xl" />
-          <div className="pointer-events-none absolute -left-10 -bottom-16 h-48 w-48 rounded-full bg-white/5 blur-3xl" />
+          <div className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-[#EB8B2E]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -left-10 -bottom-16 h-56 w-56 rounded-full bg-[#EB8B2E]/8 blur-3xl" />
 
           {imageSrc ? (
             <div className="relative aspect-[5/4] min-h-[280px] w-full md:col-span-7 md:aspect-auto md:min-h-[min(100%,520px)] md:h-full">
@@ -75,7 +75,7 @@ export function CtaStrip({
             <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={primaryHref}
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95"
+              className="shimmer-btn group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95"
             >
               {primaryLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

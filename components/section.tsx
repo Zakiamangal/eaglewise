@@ -16,9 +16,12 @@ export function Section({ id, eyebrow, title, description, children, className }
       <div className="container-shell">
         <div className="mb-8 md:mb-11">
           {eyebrow ? (
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E] md:text-xs">
-              {eyebrow}
-            </p>
+            <div className="mb-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E] md:text-xs">
+                {eyebrow}
+              </p>
+              <div className="mt-2 h-0.5 w-10 rounded-full bg-[#EB8B2E]/50" />
+            </div>
           ) : null}
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">{title}</h2>
           {description ? (

@@ -13,6 +13,7 @@ export function SiteHeader() {
   const cfg = modeConfig[mode];
   const navMenus = navMenusByMode[mode];
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   /** Which top-level nav href has its submenu open in the mobile drawer (accordion). */
   const [mobileExpandedHref, setMobileExpandedHref] = useState<string | null>(null);
 
@@ -22,6 +23,13 @@ export function SiteHeader() {
     setMobileOpen(false);
     setMobileExpandedHref(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll(); // check initial position
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -51,7 +59,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="border-b border-border/70 bg-white">
+    <header className={`sticky top-0 z-50 border-b border-border/70 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-lg shadow-sm" : "bg-white"}`}>
       <div className="container-shell flex min-h-[72px] items-center justify-between gap-3 py-2">
         <Link href={cfg.homeHref} className="min-w-0 shrink leading-none">
           <Image

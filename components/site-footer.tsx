@@ -13,7 +13,9 @@ export function SiteFooter() {
   const cfg = modeConfig[mode];
 
   return (
-    <footer className="mt-20 border-t border-border bg-secondary text-secondary-foreground">
+    <footer className="mt-20 bg-secondary text-secondary-foreground">
+      {/* Golden gradient top accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#EB8B2E]/50 to-transparent" />
       <div className="container-shell grid gap-10 py-14 md:grid-cols-3">
         <div className="md:pr-6">
           <div className="inline-flex rounded-xl bg-white/95 px-3 py-2 shadow-sm ring-1 ring-black/5">
@@ -71,13 +73,13 @@ export function SiteFooter() {
             </li>
             <li className="flex items-center gap-3">
               <Phone className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
-              <a href={`tel:${companyInfo.phoneTel}`} className="transition hover:text-[#EB8B2E]">
+              <a href={`tel:${companyInfo.phoneTel}`} className="inline-block transition hover:text-[#EB8B2E] hover:-translate-y-0.5">
                 Phone: {companyInfo.phone}
               </a>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4 shrink-0 text-[#EB8B2E]" />
-              <a href={`mailto:${companyInfo.email}`} className="transition hover:text-[#EB8B2E]">
+              <a href={`mailto:${companyInfo.email}`} className="inline-block transition hover:text-[#EB8B2E] hover:-translate-y-0.5">
                 Email: {companyInfo.email}
               </a>
             </li>
@@ -87,7 +89,7 @@ export function SiteFooter() {
                 href={companyInfo.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition hover:text-[#EB8B2E]"
+                className="inline-block transition hover:text-[#EB8B2E] hover:-translate-y-0.5"
               >
                 Website: eaglewisebiz.com
               </a>
@@ -98,7 +100,7 @@ export function SiteFooter() {
                 href={companyInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition hover:text-[#EB8B2E]"
+                className="inline-block transition hover:text-[#EB8B2E] hover:-translate-y-0.5"
               >
                 LinkedIn
               </a>

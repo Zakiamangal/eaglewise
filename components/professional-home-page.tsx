@@ -105,7 +105,7 @@ export default function ProfessionalHomePage() {
   return (
     <SiteShell>
       <section className="pb-8 pt-0">
-        <div className="relative h-[620px] overflow-hidden bg-secondary md:h-[680px]">
+        <div className="relative h-[700px] overflow-hidden bg-secondary md:h-[740px]">
           <motion.div
             initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -123,6 +123,16 @@ export default function ProfessionalHomePage() {
           </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
+
+          {/* Floating decorative orbs */}
+          <div
+            className="pointer-events-none absolute right-[10%] top-[15%] h-64 w-64 rounded-full bg-[#EB8B2E]/15 blur-[80px]"
+            style={{ animation: "float 6s ease-in-out infinite" }}
+          />
+          <div
+            className="pointer-events-none absolute left-[60%] bottom-[20%] h-48 w-48 rounded-full bg-blue-400/10 blur-[70px]"
+            style={{ animation: "float 8s ease-in-out infinite 1s" }}
+          />
 
           <div className="absolute inset-0 flex items-start">
             <div className="container-shell pt-12 md:pt-16">
@@ -161,7 +171,7 @@ export default function ProfessionalHomePage() {
                 >
                   <Link
                     href="/professional/contact"
-                    className="group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-6 text-base font-semibold text-white transition-all hover:bg-[#d97a22] md:h-14 md:px-8"
+                    className="shimmer-btn group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-6 text-base font-semibold text-white transition-all hover:bg-[#d97a22] md:h-14 md:px-8"
                   >
                     <span>Request Consultation</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -205,7 +215,7 @@ export default function ProfessionalHomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] border border-border/40 bg-surface px-6 py-8 shadow-none md:-mt-16 md:px-10 md:py-8"
+            className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] border border-white/60 border-t-2 border-t-[#EB8B2E]/40 bg-white/80 px-6 py-8 shadow-lg backdrop-blur-xl md:-mt-16 md:px-10 md:py-8"
           >
             <div className="grid grid-cols-1 gap-6 divide-y divide-border/40 md:grid-cols-3 md:gap-0 md:divide-x md:divide-y-0">
               <article className="flex flex-col items-center pt-4 first:pt-0 md:items-start md:px-8 md:py-0 md:first:pl-0">
@@ -384,11 +394,11 @@ export default function ProfessionalHomePage() {
                   <motion.article
                     variants={fadeInUp}
                     key={item.title}
-                    className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                    className="group relative overflow-hidden rounded-[2rem] border border-border/50 border-l-[3px] border-l-transparent bg-surface p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-l-[#EB8B2E] hover:shadow-md"
                   >
                     <div className="absolute right-0 top-0 h-32 w-32 -translate-y-16 translate-x-16 rounded-full bg-surface-alt transition-transform duration-500 group-hover:scale-150" />
                     <div className="relative z-10">
-                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-alt text-[#EB8B2E] transition-colors group-hover:bg-[#EB8B2E] group-hover:text-white">
+                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-alt text-[#EB8B2E] transition-all group-hover:bg-[#EB8B2E] group-hover:text-white group-hover:scale-110">
                         <Icon className="h-6 w-6" />
                       </div>
                       <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
@@ -412,14 +422,18 @@ export default function ProfessionalHomePage() {
               variants={staggerContainer}
               className="grid gap-6 md:grid-cols-3"
             >
-              {pillars.map((item) => {
+              {pillars.map((item, idx) => {
                 const Icon = item.icon;
+                const stepNum = String(idx + 1).padStart(2, "0");
                 return (
                   <motion.article
                     variants={fadeInUp}
                     key={item.title}
-                    className="group flex flex-col rounded-[2rem] border border-border/50 bg-surface p-8 shadow-sm transition-all hover:border-[#EB8B2E]/30 hover:shadow-md"
+                    className="group relative flex flex-col rounded-[2rem] border border-border/50 bg-surface p-8 shadow-sm transition-all hover:border-[#EB8B2E]/30 hover:shadow-md"
                   >
+                    <span className="absolute right-6 top-5 text-xs font-bold text-[#EB8B2E]/70 bg-[#EB8B2E]/10 rounded-full h-8 w-8 flex items-center justify-center">
+                      {stepNum}
+                    </span>
                     <div className="mb-6 flex items-center gap-4">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
                         <Icon className="h-6 w-6" />
@@ -427,8 +441,8 @@ export default function ProfessionalHomePage() {
                       <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
                     </div>
                     <p className="flex-1 text-base leading-relaxed text-muted-foreground">{item.desc}</p>
-                    <div className="mt-8 flex items-center text-sm font-semibold text-[#EB8B2E] opacity-0 transition-opacity group-hover:opacity-100">
-                      View catalogue <ArrowRight className="ml-2 h-4 w-4" />
+                    <div className="mt-8 flex items-center text-sm font-semibold text-[#EB8B2E] opacity-70 transition-opacity group-hover:opacity-100">
+                      View catalogue <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </motion.article>
                 );
@@ -460,27 +474,50 @@ export default function ProfessionalHomePage() {
               transition={{ duration: 34, ease: "linear", repeat: Infinity }}
               className="flex w-max gap-4"
             >
-              {marqueeTestimonials.map((item, idx) => (
-                <article
-                  key={`${item.author}-${item.date}-${idx}`}
-                  className="w-[300px] rounded-3xl border border-border/60 bg-surface p-6 md:w-[360px]"
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: 5 }).map((_, starIdx) => (
-                        <Star
-                          key={`${item.author}-star-${starIdx}-${idx}`}
-                          className="h-4 w-4 fill-[#EB8B2E] text-[#EB8B2E]"
-                        />
-                      ))}
+              {marqueeTestimonials.map((item, idx) => {
+                const initials = item.author
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")
+                  .slice(0, 2);
+                const avatarColors = [
+                  "bg-[#EB8B2E]/15 text-[#EB8B2E]",
+                  "bg-blue-100 text-blue-600",
+                  "bg-emerald-100 text-emerald-600",
+                ];
+                return (
+                  <article
+                    key={`${item.author}-${item.date}-${idx}`}
+                    className="relative w-[300px] rounded-3xl border border-border/60 bg-surface p-6 md:w-[360px]"
+                  >
+                    {/* Decorative quotation mark */}
+                    <span className="pointer-events-none absolute right-4 top-2 select-none text-6xl font-serif leading-none text-[#EB8B2E]/10">
+                      &ldquo;
+                    </span>
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, starIdx) => (
+                          <Star
+                            key={`${item.author}-star-${starIdx}-${idx}`}
+                            className="h-4 w-4 fill-[#EB8B2E] text-[#EB8B2E]"
+                          />
+                        ))}
+                      </div>
+                      <span className="text-xs font-medium text-muted-foreground">{item.date}</span>
                     </div>
-                    <span className="text-xs font-medium text-muted-foreground">{item.date}</span>
-                  </div>
-                  <p className="text-sm font-semibold text-foreground">{item.author}</p>
-                  <p className="mt-3 text-base leading-7 text-muted-foreground">{item.quote}</p>
-                  <p className="mt-6 text-sm font-semibold text-foreground">Trustpilot</p>
-                </article>
-              ))}
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold ${avatarColors[idx % avatarColors.length]}`}
+                      >
+                        {initials}
+                      </div>
+                      <p className="text-sm font-semibold text-foreground">{item.author}</p>
+                    </div>
+                    <p className="mt-3 text-base leading-7 text-muted-foreground">{item.quote}</p>
+                    <p className="mt-6 text-sm font-semibold text-foreground">Trustpilot</p>
+                  </article>
+                );
+              })}
             </motion.div>
           </div>
 

@@ -1,5 +1,48 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.glass {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.shimmer-btn:hover::after {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
 :root {
   --background: #f5f7fb;
   --foreground: #070d1a;
