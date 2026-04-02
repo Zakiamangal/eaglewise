@@ -45,15 +45,15 @@ export const modeConfig = {
   },
   trading: {
     id: "trading" as const,
-    label: "Trading & Partners",
-    tabLabel: "trading & partners",
-    switcherShortLabel: "trading & partners",
+    label: "Trading & Partnership",
+    tabLabel: "trading & partnership",
+    switcherShortLabel: "trading & partnership",
     basePath: "/trading",
     homeHref: "/trading",
     navLinks: [
       { href: "/trading/products", label: "Products" },
       { href: "/trading/markets", label: "Markets" },
-      { href: "/trading/partners", label: "Partners" },
+      { href: "/trading/partners", label: "Partnership" },
       { href: "/trading/faq", label: "FAQ" },
       { href: "/trading/contact", label: "Contact" },
     ] satisfies NavItem[],
@@ -192,7 +192,7 @@ export const navMenusByMode: Record<SiteMode, Record<string, NavMenuItem[]>> = {
       },
       {
         href: "/trading/partners#key-partners",
-        label: "Key Partners",
+        label: "Key Partnership",
         description: "Khan Naseri Trading, Eaglewise CA, and in-market showcase.",
       },
       {

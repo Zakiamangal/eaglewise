@@ -15,7 +15,7 @@ export default function TradingContactPage() {
           imageSrc="/trading/hero-handshake-style.jpg"
           imageAlt="Business partners shaking hands in a professional setting"
           imagePositionClassName="object-[center_30%] sm:object-[center_25%]"
-          eyebrow="Contact · Trading & Partners"
+          eyebrow="Contact · Trading & Partnership"
           title="Business inquiries & partnerships"
           subtitle="For trading, sourcing, distribution, and marketplace discussions, contact us through the form or our official channels."
         />

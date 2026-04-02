@@ -47,7 +47,7 @@ export default function TradingProductsPage() {
           imageAlt="E-commerce and digital retail"
           imagePositionClassName="object-[center_45%]"
           eyebrow="Products & channels"
-          title="Sourcing, exports, and online sales"
+          title="Sourcing, exports, trade and partnership"
           subtitle="Consumer goods from named UAE supplier lines, sold through major marketplaces and supported by regional distribution partners."
         />
         <Section

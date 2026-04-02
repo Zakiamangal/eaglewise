@@ -161,7 +161,7 @@ export default function TradingHomePage() {
                     variants={fadeInUp}
                     className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB8B2E]"
                   >
-                    Trading &amp; Partners
+                    Trading &amp; Partnership
                   </motion.p>
                   <motion.h1
                     variants={fadeInUp}

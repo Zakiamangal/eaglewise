@@ -41,7 +41,7 @@ export default function TradingFaqPage() {
           imageSrc="/trading/hero-handshake-style.jpg"
           imageAlt="Business partnership discussion"
           imagePositionClassName="object-[center_30%] sm:object-[center_25%]"
-          eyebrow="FAQ · Trading & Partners"
+          eyebrow="FAQ · Trading & Partnership"
           title="Trading & partnerships"
           subtitle="Answers aligned with our corporate profile: sourcing, exports, marketplaces, and regional partners."
         />

@@ -44,7 +44,7 @@ export function ContactForm({ formType }: ContactFormProps) {
 
     setStatus("sending");
     setErrorDetail("");
-    const formLabel = formType === "trading" ? "Trading & Partners" : "Professional Services";
+    const formLabel = formType === "trading" ? "Trading & Partnership" : "Professional Services";
     const subject = `[Eaglewise · ${formLabel}] ${name.trim()}`;
 
     try {
