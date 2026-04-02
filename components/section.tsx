@@ -14,8 +14,8 @@ type SectionProps = {
 };
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24, rotateX: 6 },
+  visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const staggerHeader: Variants = {
@@ -26,13 +26,14 @@ const staggerHeader: Variants = {
 export function Section({ id, eyebrow, title, description, children, className }: SectionProps) {
   return (
     <section id={id} className={`scroll-mt-36 py-16 md:py-24 ${className ?? ""}`}>
-      <div className="container-shell">
+      <div className="container-shell" style={{ perspective: "1000px" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerHeader}
           className="mb-10 md:mb-14"
+          style={{ transformStyle: "preserve-3d" }}
         >
           {eyebrow ? (
             <motion.p
@@ -58,10 +59,11 @@ export function Section({ id, eyebrow, title, description, children, className }
           ) : null}
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, rotateX: 4 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+          style={{ transformStyle: "preserve-3d" }}
         >
           {children}
         </motion.div>

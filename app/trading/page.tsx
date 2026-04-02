@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { SiteShell } from "@/components/site-shell";
+import { TiltCard } from "@/components/tilt-card";
 import {
   ArrowRight,
   Award,
@@ -147,6 +148,12 @@ export default function TradingHomePage() {
             />
             {/* Same left-to-right scrim as Professional tab for readable hero copy */}
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
+            {/* 3D floating shapes */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+              <div className="float-3d absolute right-[10%] top-[20%] h-16 w-16 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm md:h-24 md:w-24" />
+              <div className="float-3d-alt absolute right-[25%] bottom-[18%] h-12 w-12 rounded-full border border-[#EB8B2E]/20 bg-[#EB8B2E]/8 md:h-18 md:w-18" />
+              <div className="float-3d-slow absolute right-[6%] bottom-[40%] h-8 w-8 rounded-xl border border-white/8 bg-white/4 md:h-14 md:w-14" />
+            </div>
             {/* Extra bottom weight on small screens where copy is centered lower */}
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/35 to-transparent md:hidden" />
             <div className="absolute inset-0 flex items-end md:items-center">
@@ -368,28 +375,31 @@ export default function TradingHomePage() {
               {partnerExpectItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <motion.article
+                  <motion.div
                     key={item.title}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-40px" }}
                     variants={fadeInUp}
-                    className="group relative rounded-2xl bg-white/90 p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(7,13,26,0.1)] md:p-7"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#EB8B2E]/18 to-[#EB8B2E]/5 text-[#EB8B2E] ring-1 ring-[#EB8B2E]/15 transition group-hover:from-[#EB8B2E]/25 group-hover:to-[#EB8B2E]/8">
-                      <Icon
-                        className="h-6 w-6"
-                        strokeWidth={1.65}
-                        aria-hidden
-                      />
-                    </div>
-                    <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
-                      {item.description}
-                    </p>
-                  </motion.article>
+                    <TiltCard className="h-full rounded-2xl" maxTilt={7}>
+                      <article className="group relative h-full rounded-2xl bg-white/90 p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] backdrop-blur-sm transition-shadow duration-300 hover:shadow-[0_20px_55px_rgba(7,13,26,0.1)] md:p-7">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#EB8B2E]/18 to-[#EB8B2E]/5 text-[#EB8B2E] ring-1 ring-[#EB8B2E]/15 transition group-hover:from-[#EB8B2E]/25 group-hover:to-[#EB8B2E]/8">
+                          <Icon
+                            className="h-6 w-6"
+                            strokeWidth={1.65}
+                            aria-hidden
+                          />
+                        </div>
+                        <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+                          {item.description}
+                        </p>
+                      </article>
+                    </TiltCard>
+                  </motion.div>
                 );
               })}
             </div>
@@ -409,26 +419,25 @@ export default function TradingHomePage() {
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {landingTestimonials.map((item) => (
-                <article
-                  key={item.author}
-                  className="flex flex-col rounded-2xl bg-neutral-50/50 p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)]"
-                >
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3.5 w-3.5 fill-[#EB8B2E] text-[#EB8B2E]"
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-4 text-sm font-semibold">{item.author}</p>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {item.quote}
-                  </p>
-                  <p className="mt-6 text-xs font-medium text-neutral-400">
-                    {item.date}
-                  </p>
-                </article>
+                <TiltCard key={item.author} className="rounded-2xl" maxTilt={6}>
+                  <article className="flex h-full flex-col rounded-2xl bg-neutral-50/50 p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-shadow hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]">
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-3.5 w-3.5 fill-[#EB8B2E] text-[#EB8B2E]"
+                        />
+                      ))}
+                    </div>
+                    <p className="mt-4 text-sm font-semibold">{item.author}</p>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {item.quote}
+                    </p>
+                    <p className="mt-6 text-xs font-medium text-neutral-400">
+                      {item.date}
+                    </p>
+                  </article>
+                </TiltCard>
               ))}
             </div>
             <div className="mt-10 text-center">
@@ -466,7 +475,7 @@ export default function TradingHomePage() {
         {/* Light CTA — Capital-style closing block */}
         <section className="bg-neutral-50 px-4 pb-16 pt-4 md:px-6">
           <div className="container-shell">
-            <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(7,13,26,0.08)] md:grid md:grid-cols-2 md:rounded-[2.5rem]">
+            <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(7,13,26,0.08)] md:grid md:grid-cols-2 md:rounded-[2.5rem]" style={{ transformStyle: "preserve-3d" }}>
               <div className="relative min-h-[240px] md:min-h-[360px]">
                 <Image
                   src="/trading/cta-partners.jpg"

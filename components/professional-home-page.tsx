@@ -6,6 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
+import { TiltCard } from "@/components/tilt-card";
 import {
   Calculator,
   FileText,
@@ -124,6 +125,13 @@ export default function ProfessionalHomePage() {
 
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
 
+          {/* 3D floating shapes */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+            <div className="float-3d absolute right-[12%] top-[18%] h-20 w-20 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm md:h-28 md:w-28" />
+            <div className="float-3d-alt absolute right-[28%] bottom-[22%] h-14 w-14 rounded-full border border-[#EB8B2E]/20 bg-[#EB8B2E]/8 md:h-20 md:w-20" />
+            <div className="float-3d-slow absolute right-[8%] bottom-[35%] h-10 w-10 rounded-xl border border-white/8 bg-white/4 md:h-16 md:w-16" />
+          </div>
+
           <div className="absolute inset-0 flex items-center">
             <div className="container-shell pt-12 md:pt-16">
               <motion.div
@@ -205,7 +213,7 @@ export default function ProfessionalHomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] bg-surface px-6 py-8 shadow-[0_16px_48px_rgba(7,13,26,0.08)] md:-mt-16 md:px-10 md:py-8"
+            className="perspective-container relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] bg-surface px-6 py-8 shadow-[0_16px_48px_rgba(7,13,26,0.08)] md:-mt-16 md:px-10 md:py-8"
           >
             <div className="grid grid-cols-1 gap-6 divide-y divide-border/40 md:grid-cols-3 md:gap-0 md:divide-x md:divide-y-0">
               <article className="flex flex-col items-center pt-4 first:pt-0 md:items-start md:px-8 md:py-0 md:first:pl-0">
@@ -248,6 +256,7 @@ export default function ProfessionalHomePage() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
             className="grid items-center gap-6 rounded-[2rem] bg-surface p-5 shadow-[0_12px_40px_rgba(7,13,26,0.06)] md:grid-cols-2 md:gap-8 md:p-8"
+            style={{ transformStyle: "preserve-3d" }}
           >
             <div className="h-[250px] overflow-hidden rounded-[1.5rem] md:h-[310px]">
               <Image
@@ -310,26 +319,27 @@ export default function ProfessionalHomePage() {
               </div>
             </motion.article>
 
-            <motion.article
-              variants={fadeInUp}
-              className="rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] lg:col-span-5 md:p-8"
-            >
-              <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
-                <FileText className="h-5 w-5" />
-              </div>
-              <h3 className="text-2xl font-bold tracking-tight md:text-3xl">Named UAE consultancy experience</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground">
-                We have provided consultancy services to companies in the UAE including Skylink and Shanzer. Our focus is
-                efficient solutions, financial transparency, and sustainable growth.
-              </p>
-              <p className="mt-6 text-sm font-medium text-foreground/70">
-                For consultancy inquiries, use{" "}
-                <Link href="/professional/contact" className="font-semibold text-[#EB8B2E] hover:underline">
-                  the contact form
-                </Link>
-                .
-              </p>
-            </motion.article>
+            <motion.div variants={fadeInUp} className="lg:col-span-5">
+              <TiltCard className="h-full rounded-[2rem]" maxTilt={5}>
+                <article className="h-full rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] md:p-8">
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
+                    <FileText className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight md:text-3xl">Named UAE consultancy experience</h3>
+                  <p className="mt-4 text-base leading-8 text-muted-foreground">
+                    We have provided consultancy services to companies in the UAE including Skylink and Shanzer. Our focus is
+                    efficient solutions, financial transparency, and sustainable growth.
+                  </p>
+                  <p className="mt-6 text-sm font-medium text-foreground/70">
+                    For consultancy inquiries, use{" "}
+                    <Link href="/professional/contact" className="font-semibold text-[#EB8B2E] hover:underline">
+                      the contact form
+                    </Link>
+                    .
+                  </p>
+                </article>
+              </TiltCard>
+            </motion.div>
 
             <motion.article
               variants={fadeInUp}
@@ -344,19 +354,20 @@ export default function ProfessionalHomePage() {
               />
             </motion.article>
 
-            <motion.article
-              variants={fadeInUp}
-              className="rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] lg:col-span-7 md:p-8"
-            >
-              <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
-                <Handshake className="h-5 w-5" />
-              </div>
-              <h3 className="text-2xl font-bold tracking-tight md:text-3xl">Regional business network</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground">
-                Eaglewise Chartered Accountants Company (Afghanistan) is part of the network that supports professional
-                services, wholesale distribution, and supply across markets where our clients operate.
-              </p>
-            </motion.article>
+            <motion.div variants={fadeInUp} className="lg:col-span-7">
+              <TiltCard className="h-full rounded-[2rem]" maxTilt={5}>
+                <article className="h-full rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] md:p-8">
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
+                    <Handshake className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight md:text-3xl">Regional business network</h3>
+                  <p className="mt-4 text-base leading-8 text-muted-foreground">
+                    Eaglewise Chartered Accountants Company (Afghanistan) is part of the network that supports professional
+                    services, wholesale distribution, and supply across markets where our clients operate.
+                  </p>
+                </article>
+              </TiltCard>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -364,6 +375,13 @@ export default function ProfessionalHomePage() {
       <div className="relative overflow-hidden pb-10">
         <div className="absolute top-0 right-0 -z-10 h-[600px] w-[600px] rounded-full bg-[#EB8B2E]/5 blur-[100px]" />
         <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] rounded-full bg-[#070d1a]/5 blur-[100px]" />
+        {/* 3D floating accents */}
+        <div className="pointer-events-none absolute left-[5%] top-[15%] hidden md:block" aria-hidden>
+          <div className="float-3d-slow h-16 w-16 rounded-2xl border border-[#EB8B2E]/15 bg-[#EB8B2E]/5" />
+        </div>
+        <div className="pointer-events-none absolute right-[6%] top-[45%] hidden md:block" aria-hidden>
+          <div className="float-3d h-12 w-12 rounded-full border border-border/30 bg-surface-alt/50" />
+        </div>
 
         <div className="relative z-10 pt-10">
           <Section
@@ -381,20 +399,20 @@ export default function ProfessionalHomePage() {
               {highlights.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <motion.article
-                    variants={fadeInUp}
-                    key={item.title}
-                    className="group relative overflow-hidden rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]"
-                  >
-                    <div className="absolute right-0 top-0 h-32 w-32 -translate-y-16 translate-x-16 rounded-full bg-surface-alt transition-transform duration-500 group-hover:scale-150" />
-                    <div className="relative z-10">
-                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-alt text-[#EB8B2E] transition-colors group-hover:bg-[#EB8B2E] group-hover:text-white">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
-                      <p className="text-base leading-relaxed text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </motion.article>
+                  <motion.div variants={fadeInUp} key={item.title}>
+                    <TiltCard className="h-full rounded-[2rem]">
+                      <article className="group relative h-full overflow-hidden rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-shadow hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]">
+                        <div className="absolute right-0 top-0 h-32 w-32 -translate-y-16 translate-x-16 rounded-full bg-surface-alt transition-transform duration-500 group-hover:scale-150" />
+                        <div className="relative z-10">
+                          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-alt text-[#EB8B2E] transition-colors group-hover:bg-[#EB8B2E] group-hover:text-white">
+                            <Icon className="h-6 w-6" />
+                          </div>
+                          <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
+                          <p className="text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+                        </div>
+                      </article>
+                    </TiltCard>
+                  </motion.div>
                 );
               })}
             </motion.div>
@@ -415,22 +433,22 @@ export default function ProfessionalHomePage() {
               {pillars.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <motion.article
-                    variants={fadeInUp}
-                    key={item.title}
-                    className="group flex flex-col rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]"
-                  >
-                    <div className="mb-6 flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
-                    </div>
-                    <p className="flex-1 text-base leading-relaxed text-muted-foreground">{item.desc}</p>
-                    <div className="mt-8 flex items-center text-sm font-semibold text-[#EB8B2E] opacity-0 transition-opacity group-hover:opacity-100">
-                      View catalogue <ArrowRight className="ml-2 h-4 w-4" />
-                    </div>
-                  </motion.article>
+                  <motion.div variants={fadeInUp} key={item.title}>
+                    <TiltCard className="h-full rounded-[2rem]" maxTilt={6}>
+                      <article className="group flex h-full flex-col rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-shadow hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]">
+                        <div className="mb-6 flex items-center gap-4">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
+                            <Icon className="h-6 w-6" />
+                          </div>
+                          <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
+                        <p className="flex-1 text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+                        <div className="mt-8 flex items-center text-sm font-semibold text-[#EB8B2E] opacity-0 transition-opacity group-hover:opacity-100">
+                          View catalogue <ArrowRight className="ml-2 h-4 w-4" />
+                        </div>
+                      </article>
+                    </TiltCard>
+                  </motion.div>
                 );
               })}
             </motion.div>
@@ -463,7 +481,8 @@ export default function ProfessionalHomePage() {
               {marqueeTestimonials.map((item, idx) => (
                 <article
                   key={`${item.author}-${item.date}-${idx}`}
-                  className="w-[300px] rounded-3xl bg-surface p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)] md:w-[360px]"
+                  className="w-[300px] rounded-3xl bg-surface p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-shadow hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)] md:w-[360px]"
+                  style={{ transformStyle: "preserve-3d" }}
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-1">

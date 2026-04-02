@@ -56,6 +56,11 @@ export function SubpageHero({
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/20" />
+        {/* 3D floating shapes */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="float-3d absolute right-[10%] top-[22%] h-14 w-14 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm md:h-20 md:w-20" />
+          <div className="float-3d-alt absolute right-[22%] bottom-[20%] h-10 w-10 rounded-full border border-[#EB8B2E]/15 bg-[#EB8B2E]/6 md:h-14 md:w-14" />
+        </div>
         {variant === "trading" ? (
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/20 to-transparent md:hidden" />
         ) : (
