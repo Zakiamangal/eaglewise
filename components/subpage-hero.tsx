@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
 
 export type SubpageHeroProps = {
   variant: "professional" | "trading";
@@ -9,6 +12,16 @@ export type SubpageHeroProps = {
   eyebrow: string;
   title: string;
   subtitle?: string;
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+const stagger: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
 };
 
 /**
@@ -27,14 +40,21 @@ export function SubpageHero({
   return (
     <section className="bg-white pb-0 pt-0 text-white">
       <div className="relative min-h-[min(52vh,460px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(48vh,520px)] md:rounded-b-[3rem]">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          className={`object-cover ${imagePositionClassName}`}
-          sizes="100vw"
-        />
+        <motion.div
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            priority
+            className={`object-cover ${imagePositionClassName}`}
+            sizes="100vw"
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
         {variant === "trading" ? (
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/20 to-transparent md:hidden" />
@@ -55,15 +75,33 @@ export function SubpageHero({
                 : "container-shell w-full pb-12 pt-28 md:pb-16 md:pt-24"
             }
           >
-            <div className="mx-auto max-w-2xl text-center md:mx-0 md:text-left">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB8B2E]">{eyebrow}</p>
-              <h1 className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.25rem]">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="mx-auto max-w-2xl text-center md:mx-0 md:text-left"
+            >
+              <motion.p
+                variants={fadeInUp}
+                className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB8B2E]"
+              >
+                {eyebrow}
+              </motion.p>
+              <motion.h1
+                variants={fadeInUp}
+                className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.25rem]"
+              >
                 {title}
-              </h1>
+              </motion.h1>
               {subtitle ? (
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">{subtitle}</p>
+                <motion.p
+                  variants={fadeInUp}
+                  className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg"
+                >
+                  {subtitle}
+                </motion.p>
               ) : null}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
