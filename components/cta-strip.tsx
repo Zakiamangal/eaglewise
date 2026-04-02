@@ -32,18 +32,18 @@ export function CtaStrip({
   const radiusClass = bottomRoundedOnly ? "rounded-b-[52px]" : "rounded-[2rem]";
 
   return (
-    <section id={id} className="scroll-mt-28 py-12 md:py-18">
+    <section id={id} className="scroll-mt-28 py-16 md:py-24">
       <div className={fullWidth ? "" : "container-shell"}>
         <div
-          className={`relative overflow-hidden border border-[#EB8B2E]/25 bg-secondary text-secondary-foreground ${radiusClass} ${
-            imageSrc ? "grid gap-0 md:min-h-[min(520px,56vh)] md:grid-cols-12" : "px-6 py-10 md:px-10 md:py-12"
+          className={`relative overflow-hidden bg-secondary text-secondary-foreground ${radiusClass} ${
+            imageSrc ? "grid gap-0 md:min-h-[min(560px,56vh)] md:grid-cols-12" : "px-6 py-10 md:px-10 md:py-12"
           }`}
         >
           <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#EB8B2E]/15 blur-3xl" />
           <div className="pointer-events-none absolute -left-10 -bottom-16 h-48 w-48 rounded-full bg-white/5 blur-3xl" />
 
           {imageSrc ? (
-            <div className="relative aspect-[5/4] min-h-[280px] w-full md:col-span-7 md:aspect-auto md:min-h-[min(100%,520px)] md:h-full">
+            <div className="relative aspect-[5/4] min-h-[280px] w-full md:col-span-7 md:aspect-auto md:min-h-[min(100%,560px)] md:h-full">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
@@ -75,14 +75,14 @@ export function CtaStrip({
             <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={primaryHref}
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95 md:px-8 md:py-3.5 md:text-base"
             >
               {primaryLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href={secondaryHref}
-              className="rounded-full border border-secondary-foreground/30 px-6 py-3 text-sm font-semibold transition hover:bg-secondary-foreground/10"
+              className="rounded-full border border-secondary-foreground/30 px-6 py-3 text-sm font-semibold transition hover:bg-secondary-foreground/10 md:px-8 md:py-3.5 md:text-base"
             >
               {secondaryLabel}
             </Link>

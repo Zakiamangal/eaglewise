@@ -13,8 +13,8 @@ export function SiteFooter() {
   const cfg = modeConfig[mode];
 
   return (
-    <footer className="mt-20 border-t border-border bg-secondary text-secondary-foreground">
-      <div className="container-shell grid gap-10 py-14 md:grid-cols-3">
+    <footer className="mt-20 bg-secondary text-secondary-foreground">
+      <div className="container-shell grid gap-10 py-16 md:grid-cols-3 md:py-20">
         <div className="md:pr-6">
           <div className="inline-flex rounded-xl bg-white/95 px-3 py-2 shadow-sm ring-1 ring-black/5">
             <Image

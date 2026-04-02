@@ -15,6 +15,14 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   /** Which top-level nav href has its submenu open in the mobile drawer (accordion). */
   const [mobileExpandedHref, setMobileExpandedHref] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll(); // set initial state
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     // Close overlay when the URL changes (e.g. browser back) without requiring a link click.
@@ -51,8 +59,14 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="border-b border-border/70 bg-white">
-      <div className="container-shell flex min-h-[72px] items-center justify-between gap-3 py-2">
+    <header
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-border/70 bg-white shadow-[0_1px_8px_rgba(7,13,26,0.06)]"
+          : "border-transparent bg-white/95 backdrop-blur-sm"
+      }`}
+    >
+      <div className="container-shell flex min-h-[76px] items-center justify-between gap-3 py-2">
         <Link href={cfg.homeHref} className="min-w-0 shrink leading-none">
           <Image
             src="/ebc-logo.png"

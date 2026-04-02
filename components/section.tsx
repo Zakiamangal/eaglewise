@@ -25,33 +25,33 @@ const staggerHeader: Variants = {
 
 export function Section({ id, eyebrow, title, description, children, className }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-36 py-14 md:py-20 ${className ?? ""}`}>
+    <section id={id} className={`scroll-mt-36 py-16 md:py-24 ${className ?? ""}`}>
       <div className="container-shell">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerHeader}
-          className="mb-8 md:mb-11"
+          className="mb-10 md:mb-14"
         >
           {eyebrow ? (
             <motion.p
               variants={fadeInUp}
-              className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E] md:text-xs"
+              className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E] md:text-[13px]"
             >
               {eyebrow}
             </motion.p>
           ) : null}
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-[2.75rem] lg:text-5xl"
           >
             {title}
           </motion.h2>
           {description ? (
             <motion.p
               variants={fadeInUp}
-              className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg"
+              className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground md:text-xl"
             >
               {description}
             </motion.p>

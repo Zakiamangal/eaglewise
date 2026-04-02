@@ -105,7 +105,7 @@ export default function ProfessionalHomePage() {
   return (
     <SiteShell>
       <section className="pb-8 pt-0">
-        <div className="relative h-[620px] overflow-hidden bg-secondary md:h-[680px]">
+        <div className="relative h-[min(85vh,720px)] overflow-hidden bg-secondary md:h-[min(90vh,800px)]">
           <motion.div
             initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -122,9 +122,9 @@ export default function ProfessionalHomePage() {
             />
           </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
 
-          <div className="absolute inset-0 flex items-start">
+          <div className="absolute inset-0 flex items-center">
             <div className="container-shell pt-12 md:pt-16">
               <motion.div
                 initial="hidden"
@@ -141,7 +141,7 @@ export default function ProfessionalHomePage() {
 
                 <motion.h1
                   variants={fadeInUp}
-                  className="text-[2.35rem] font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-[4rem]"
+                  className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-[4.5rem]"
                 >
                   Professional consultancy, <br />
                   <span className="text-white/70">UAE-based, internationally relevant.</span>
@@ -205,7 +205,7 @@ export default function ProfessionalHomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] border border-border/40 bg-surface px-6 py-8 shadow-none md:-mt-16 md:px-10 md:py-8"
+            className="relative z-10 -mt-10 mx-auto max-w-5xl rounded-[2.5rem] bg-surface px-6 py-8 shadow-[0_16px_48px_rgba(7,13,26,0.08)] md:-mt-16 md:px-10 md:py-8"
           >
             <div className="grid grid-cols-1 gap-6 divide-y divide-border/40 md:grid-cols-3 md:gap-0 md:divide-x md:divide-y-0">
               <article className="flex flex-col items-center pt-4 first:pt-0 md:items-start md:px-8 md:py-0 md:first:pl-0">
@@ -215,7 +215,7 @@ export default function ProfessionalHomePage() {
                     Established
                   </p>
                 </div>
-                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-3xl">March 2025</p>
+                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-[2rem]">March 2025</p>
               </article>
               <article className="flex flex-col items-center pt-6 md:items-start md:px-8 md:py-0">
                 <div className="flex items-center gap-2.5">
@@ -224,7 +224,7 @@ export default function ProfessionalHomePage() {
                     Service lines
                   </p>
                 </div>
-                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-3xl">10+ professional services</p>
+                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-[2rem]">10+ professional services</p>
               </article>
               <article className="flex flex-col items-center pt-6 md:items-start md:px-8 md:py-0 md:last:pr-0">
                 <div className="flex items-center gap-2.5">
@@ -233,21 +233,21 @@ export default function ProfessionalHomePage() {
                     Coverage
                   </p>
                 </div>
-                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-3xl">UAE &amp; International</p>
+                <p className="mt-2.5 text-2xl font-bold tracking-tight text-foreground md:text-[2rem]">UAE &amp; International</p>
               </article>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-8 md:py-12">
+      <section className="py-12 md:py-16">
         <div className="container-shell">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="grid items-center gap-6 rounded-[2rem] border border-border/60 bg-surface p-5 md:grid-cols-2 md:gap-8 md:p-8"
+            className="grid items-center gap-6 rounded-[2rem] bg-surface p-5 shadow-[0_12px_40px_rgba(7,13,26,0.06)] md:grid-cols-2 md:gap-8 md:p-8"
           >
             <div className="h-[250px] overflow-hidden rounded-[1.5rem] md:h-[310px]">
               <Image
@@ -279,7 +279,7 @@ export default function ProfessionalHomePage() {
         </div>
       </section>
 
-      <section className="py-8 md:py-14">
+      <section className="py-12 md:py-18">
         <div className="container-shell">
           <motion.div
             initial="hidden"
@@ -312,7 +312,7 @@ export default function ProfessionalHomePage() {
 
             <motion.article
               variants={fadeInUp}
-              className="rounded-[2rem] border border-border/60 bg-surface p-6 lg:col-span-5 md:p-8"
+              className="rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] lg:col-span-5 md:p-8"
             >
               <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
                 <FileText className="h-5 w-5" />
@@ -346,7 +346,7 @@ export default function ProfessionalHomePage() {
 
             <motion.article
               variants={fadeInUp}
-              className="rounded-[2rem] border border-border/60 bg-surface p-6 lg:col-span-7 md:p-8"
+              className="rounded-[2rem] bg-surface p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] lg:col-span-7 md:p-8"
             >
               <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#EB8B2E]/12 text-[#EB8B2E]">
                 <Handshake className="h-5 w-5" />
@@ -384,7 +384,7 @@ export default function ProfessionalHomePage() {
                   <motion.article
                     variants={fadeInUp}
                     key={item.title}
-                    className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                    className="group relative overflow-hidden rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]"
                   >
                     <div className="absolute right-0 top-0 h-32 w-32 -translate-y-16 translate-x-16 rounded-full bg-surface-alt transition-transform duration-500 group-hover:scale-150" />
                     <div className="relative z-10">
@@ -418,7 +418,7 @@ export default function ProfessionalHomePage() {
                   <motion.article
                     variants={fadeInUp}
                     key={item.title}
-                    className="group flex flex-col rounded-[2rem] border border-border/50 bg-surface p-8 shadow-sm transition-all hover:border-[#EB8B2E]/30 hover:shadow-md"
+                    className="group flex flex-col rounded-[2rem] bg-surface p-8 shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]"
                   >
                     <div className="mb-6 flex items-center gap-4">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EB8B2E]/10 text-[#EB8B2E]">
@@ -438,7 +438,7 @@ export default function ProfessionalHomePage() {
         </div>
       </div>
 
-      <section className="bg-surface-alt py-14 md:py-18">
+      <section className="bg-surface-alt py-16 md:py-24">
         <div className="container-shell">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#EB8B2E]">Testimonials</p>
@@ -463,7 +463,7 @@ export default function ProfessionalHomePage() {
               {marqueeTestimonials.map((item, idx) => (
                 <article
                   key={`${item.author}-${item.date}-${idx}`}
-                  className="w-[300px] rounded-3xl border border-border/60 bg-surface p-6 md:w-[360px]"
+                  className="w-[300px] rounded-3xl bg-surface p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)] md:w-[360px]"
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-1">
@@ -496,7 +496,7 @@ export default function ProfessionalHomePage() {
         </div>
       </section>
 
-      <section className="border-t border-border/30 bg-transparent py-8 md:py-12">
+      <section className="bg-transparent py-12 md:py-16">
         <div className="container-shell">
           <div className="flex flex-col items-center justify-between gap-6 overflow-hidden md:flex-row">
             <div className="text-center md:text-left">

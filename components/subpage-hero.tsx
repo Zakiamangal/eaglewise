@@ -39,7 +39,7 @@ export function SubpageHero({
 }: SubpageHeroProps) {
   return (
     <section className="bg-white pb-0 pt-0 text-white">
-      <div className="relative min-h-[min(52vh,460px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(48vh,520px)] md:rounded-b-[3rem]">
+      <div className="relative min-h-[min(58vh,520px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(55vh,580px)] md:rounded-b-[3rem]">
         <motion.div
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -55,7 +55,7 @@ export function SubpageHero({
             sizes="100vw"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/20" />
         {variant === "trading" ? (
           <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/20 to-transparent md:hidden" />
         ) : (
@@ -71,8 +71,8 @@ export function SubpageHero({
           <div
             className={
               variant === "professional"
-                ? "container-shell w-full pb-10 pt-28 md:pb-16 md:pt-20"
-                : "container-shell w-full pb-12 pt-28 md:pb-16 md:pt-24"
+                ? "container-shell w-full pb-14 pt-32 md:pb-20 md:pt-24"
+                : "container-shell w-full pb-16 pt-32 md:pb-20 md:pt-28"
             }
           >
             <motion.div
@@ -89,14 +89,14 @@ export function SubpageHero({
               </motion.p>
               <motion.h1
                 variants={fadeInUp}
-                className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.25rem]"
+                className="mt-4 text-[2rem] font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.75rem]"
               >
                 {title}
               </motion.h1>
               {subtitle ? (
                 <motion.p
                   variants={fadeInUp}
-                  className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg"
+                  className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-xl"
                 >
                   {subtitle}
                 </motion.p>

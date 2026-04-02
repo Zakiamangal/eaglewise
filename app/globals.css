@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #f5f7fb;
   --foreground: #070d1a;
@@ -41,7 +45,7 @@ a {
 
 .container-shell {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1280px;
   margin-inline: auto;
   padding-inline: 1rem;
 }
@@ -53,24 +57,21 @@ a {
 }
 
 .soft-card {
-  border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(7, 13, 26, 0.06);
+  box-shadow: 0 8px 24px rgba(7, 13, 26, 0.08);
 }
 
 /* Inner pages — match landing card weight */
 .eagle-card {
-  border: 1px solid rgb(226 232 240 / 0.95);
   background: var(--surface);
   border-radius: 1rem;
-  box-shadow: 0 12px 40px rgba(7, 13, 26, 0.05);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 12px 40px rgba(7, 13, 26, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .eagle-card:hover {
-  border-color: rgba(235, 139, 46, 0.2);
-  box-shadow: 0 16px 48px rgba(7, 13, 26, 0.08);
+  box-shadow: 0 20px 55px rgba(7, 13, 26, 0.1);
   transform: translateY(-2px);
 }
 

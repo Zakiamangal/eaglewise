@@ -136,7 +136,7 @@ export default function TradingHomePage() {
       <div className="bg-white text-foreground">
         {/* Hero — Capital partners style: full-bleed image, overlay, rounded bottom */}
         <section className="relative w-full pb-0 pt-0">
-          <div className="relative h-[min(78vh,640px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:h-[min(82vh,720px)] md:rounded-b-[3rem]">
+          <div className="relative h-[min(85vh,640px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:h-[min(90vh,720px)] md:rounded-b-[3rem]">
             <Image
               src="/trading/hero-handshake-style.jpg"
               alt="Team collaborating at a workstation in a modern open-plan office"
@@ -146,7 +146,7 @@ export default function TradingHomePage() {
               sizes="100vw"
             />
             {/* Same left-to-right scrim as Professional tab for readable hero copy */}
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
             {/* Extra bottom weight on small screens where copy is centered lower */}
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/35 to-transparent md:hidden" />
             <div className="absolute inset-0 flex items-end md:items-center">
@@ -165,7 +165,7 @@ export default function TradingHomePage() {
                   </motion.p>
                   <motion.h1
                     variants={fadeInUp}
-                    className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.25rem]"
+                    className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.75rem]"
                   >
                     Trading and partnership operations from the UAE
                   </motion.h1>
@@ -215,7 +215,7 @@ export default function TradingHomePage() {
         </section>
 
         {/* Centered intro — partnerships page pattern */}
-        <section className="bg-white px-4 py-16 text-center md:py-20">
+        <section className="bg-white px-4 py-16 text-center md:py-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -237,7 +237,7 @@ export default function TradingHomePage() {
         {models.map((block, index) => (
           <section
             key={block.title}
-            className={`border-t border-neutral-100 ${index % 2 === 1 ? "bg-neutral-50/80" : "bg-white"}`}
+            className={`${index % 2 === 1 ? "bg-neutral-50/80" : "bg-white"}`}
           >
             <div className="container-shell py-14 md:py-20">
               <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
@@ -285,7 +285,7 @@ export default function TradingHomePage() {
         ))}
 
         {/* Partner highlights — above “What partners can expect” */}
-        <section className="border-t border-neutral-100 bg-white px-4 py-14 md:py-20">
+        <section className="bg-white px-4 py-14 md:py-20">
           <div className="container-shell">
             <motion.div
               initial="hidden"
@@ -335,7 +335,7 @@ export default function TradingHomePage() {
         </section>
 
         {/* What partners can expect — icon cards, gradient band */}
-        <section className="relative overflow-hidden border-t border-neutral-100 bg-gradient-to-b from-white via-neutral-50/90 to-neutral-50 py-16 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-neutral-50/90 to-neutral-50 py-16 md:py-24">
           <div
             className="pointer-events-none absolute -left-32 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-[#EB8B2E]/[0.07] blur-3xl"
             aria-hidden
@@ -374,7 +374,7 @@ export default function TradingHomePage() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-40px" }}
                     variants={fadeInUp}
-                    className="group relative rounded-2xl border border-neutral-200/90 bg-white/90 p-6 shadow-[0_12px_40px_rgba(7,13,26,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#EB8B2E]/30 hover:shadow-[0_20px_55px_rgba(7,13,26,0.09)] md:p-7"
+                    className="group relative rounded-2xl bg-white/90 p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(7,13,26,0.1)] md:p-7"
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#EB8B2E]/18 to-[#EB8B2E]/5 text-[#EB8B2E] ring-1 ring-[#EB8B2E]/15 transition group-hover:from-[#EB8B2E]/25 group-hover:to-[#EB8B2E]/8">
                       <Icon
@@ -397,7 +397,7 @@ export default function TradingHomePage() {
         </section>
 
         {/* Testimonials — static grid, not marquee (distinct from professional) */}
-        <section className="border-t border-neutral-100 bg-white py-16 md:py-20">
+        <section className="bg-white py-16 md:py-20">
           <div className="container-shell">
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E]">
@@ -411,7 +411,7 @@ export default function TradingHomePage() {
               {landingTestimonials.map((item) => (
                 <article
                   key={item.author}
-                  className="flex flex-col rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6"
+                  className="flex flex-col rounded-2xl bg-neutral-50/50 p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)]"
                 >
                   <div className="flex items-center gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -444,7 +444,7 @@ export default function TradingHomePage() {
         </section>
 
         {/* Company mark — minimal */}
-        <section className="border-t border-neutral-100 bg-white py-10">
+        <section className="bg-white py-10">
           <div className="container-shell flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EB8B2E]">
@@ -466,7 +466,7 @@ export default function TradingHomePage() {
         {/* Light CTA — Capital-style closing block */}
         <section className="bg-neutral-50 px-4 pb-16 pt-4 md:px-6">
           <div className="container-shell">
-            <div className="overflow-hidden rounded-[2rem] border border-neutral-200 bg-white shadow-[0_20px_50px_rgba(7,13,26,0.06)] md:grid md:grid-cols-2 md:rounded-[2.5rem]">
+            <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(7,13,26,0.08)] md:grid md:grid-cols-2 md:rounded-[2.5rem]">
               <div className="relative min-h-[240px] md:min-h-[360px]">
                 <Image
                   src="/trading/cta-partners.jpg"
@@ -495,7 +495,7 @@ export default function TradingHomePage() {
                   </Link>
                   <Link
                     href="/trading/products"
-                    className="inline-flex rounded-full border border-neutral-300 px-8 py-3 text-sm font-semibold text-foreground transition hover:border-[#EB8B2E]/50 hover:text-[#EB8B2E]"
+                    className="inline-flex rounded-full border border-neutral-200 px-8 py-3 text-sm font-semibold text-foreground shadow-sm transition hover:shadow-md hover:text-[#EB8B2E]"
                   >
                     Product catalogue
                   </Link>
