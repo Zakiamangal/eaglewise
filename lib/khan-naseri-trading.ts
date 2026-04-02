@@ -244,11 +244,6 @@ export const khanNaseriImages: readonly KhanNaseriImage[] = [
     caption: "Premium fragrance collection — stone display",
   },
   {
-    src: "/khan-naseri-trading-co/35.jpg",
-    alt: "Khan Naseri Trading Co. special sale perfume — Smart Collection",
-    caption: "Smart Collection — special sale",
-  },
-  {
     src: "/khan-naseri-trading-co/36.jpg",
     alt: "Smart Collection No. 175 eau de parfum promotional creative",
     caption: "Smart Collection — No. 175",
