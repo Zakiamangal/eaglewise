@@ -104,8 +104,8 @@ const staggerContainer: Variants = {
 export default function ProfessionalHomePage() {
   return (
     <SiteShell>
-      <section className="pb-8 pt-0">
-        <div className="relative min-h-[420px] overflow-hidden bg-secondary md:h-[min(70vh,620px)]">
+      <section className="pb-0 pt-0">
+        <div className="relative overflow-hidden bg-secondary">
           <motion.div
             initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -124,8 +124,8 @@ export default function ProfessionalHomePage() {
 
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
 
-          <div className="absolute inset-0 flex items-end pb-20 md:items-center md:pb-0">
-            <div className="container-shell pt-8 md:pt-16">
+          <div className="relative z-10">
+            <div className="container-shell pb-14 pt-28 md:pb-20 md:pt-32">
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -141,7 +141,7 @@ export default function ProfessionalHomePage() {
 
                 <motion.h1
                   variants={fadeInUp}
-                  className="text-[1.75rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.25rem] md:text-5xl lg:text-[4rem]"
+                  className="text-[1.75rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.25rem] md:text-4xl lg:text-[3.25rem]"
                 >
                   Professional consultancy, <br />
                   <span className="text-white/70">UAE-based, internationally relevant.</span>
@@ -149,7 +149,7 @@ export default function ProfessionalHomePage() {
 
                 <motion.p
                   variants={fadeInUp}
-                  className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg md:mt-6 md:text-lg"
+                  className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base md:mt-5 md:text-lg"
                 >
                   Accounting, audit, tax, investment planning, marketing and communications advisory, project management,
                   and business development—for companies in the UAE and international markets.
@@ -157,55 +157,33 @@ export default function ProfessionalHomePage() {
 
                 <motion.div
                   variants={fadeInUp}
-                  className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-10 md:justify-start md:gap-4"
+                  className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:justify-start md:gap-4"
                 >
                   <Link
                     href="/professional/contact"
-                    className="group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-6 text-base font-semibold text-white transition-all hover:bg-[#d97a22] md:h-14 md:px-8"
+                    className="group relative inline-flex h-11 items-center justify-center gap-2 overflow-hidden rounded-full bg-[#EB8B2E] px-6 text-sm font-semibold text-white transition-all hover:bg-[#d97a22] md:h-12 md:px-8 md:text-base"
                   >
                     <span>Request Consultation</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/professional/services"
-                    className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/10 px-6 text-base font-semibold !text-gray-300 backdrop-blur-md transition-all hover:bg-white/20 hover:!text-white md:h-14 md:px-8"
+                    className="inline-flex h-11 items-center justify-center rounded-full border border-white/10 bg-white/10 px-6 text-sm font-semibold !text-gray-300 backdrop-blur-md transition-all hover:bg-white/20 hover:!text-white md:h-12 md:px-8 md:text-base"
                   >
                     View Services
                   </Link>
                 </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="mt-5 flex items-center justify-center gap-2 text-sm text-gray-200 md:hidden"
-                >
-                  <Award className="h-4 w-4 text-[#EB8B2E]" />
-                  <span>Authorized and registered in the UAE</span>
-                </motion.div>
               </motion.div>
             </div>
           </div>
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="pointer-events-none absolute inset-x-0 bottom-24 z-20 hidden w-full flex-col items-center justify-center gap-2 text-center text-sm font-medium text-white/70 md:flex md:bottom-28"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#EB8B2E]">
-              Eaglewise Business Consultancy LLC-FZ
-            </p>
-            <div className="flex items-center gap-3">
-              <Award className="h-5 w-5 text-[#EB8B2E]" />
-              <span className="!text-gray-200">Authorized and registered in the UAE</span>
-            </div>
-          </motion.div>
         </div>
 
         <div className="container-shell">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="relative z-10 mt-6 mx-auto max-w-4xl rounded-[2rem] bg-surface px-5 py-6 shadow-[0_12px_40px_rgba(7,13,26,0.07)] md:mt-8 md:px-8 md:py-6"
+            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+            className="relative z-10 mx-auto mt-8 max-w-4xl rounded-[2rem] bg-surface px-5 py-5 shadow-[0_12px_40px_rgba(7,13,26,0.07)] md:mt-10 md:px-8 md:py-6"
           >
             <div className="grid grid-cols-1 gap-6 divide-y divide-border/40 md:grid-cols-3 md:gap-0 md:divide-x md:divide-y-0">
               <article className="flex flex-col items-center pt-4 first:pt-0 md:items-start md:px-8 md:py-0 md:first:pl-0">
