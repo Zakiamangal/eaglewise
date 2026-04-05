@@ -136,7 +136,7 @@ export function ContactForm({ formType }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9873B] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#B5772F] disabled:cursor-not-allowed disabled:opacity-70"
+        className="btn-3d-primary inline-flex items-center justify-center gap-2 px-6 py-3 text-sm text-white disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "sending" ? (
           <>

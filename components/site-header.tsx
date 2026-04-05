@@ -146,13 +146,13 @@ export function SiteHeader() {
         <div className="flex shrink-0 items-center gap-2">
           <Link
             href={cfg.secondaryCta.href}
-            className="hidden rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-surface-alt md:inline-flex"
+            className="btn-3d-secondary hidden border border-border bg-surface px-5 py-2.5 text-sm text-foreground hover:bg-surface-alt md:inline-flex"
           >
             {cfg.secondaryCta.label}
           </Link>
           <Link
             href={cfg.primaryCta.href}
-            className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-95 lg:inline-flex lg:items-center lg:justify-center"
+            className="btn-3d-primary hidden px-5 py-2.5 text-sm text-primary-foreground lg:inline-flex lg:items-center lg:justify-center"
           >
             {cfg.primaryCta.label}
           </Link>
@@ -290,14 +290,14 @@ export function SiteHeader() {
               <Link
                 href={cfg.secondaryCta.href}
                 onClick={closeMobile}
-                className="mb-3 flex w-full items-center justify-center rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-surface-alt"
+                className="btn-3d-secondary mb-3 flex w-full items-center justify-center border border-border bg-white px-5 py-3 text-sm text-foreground hover:bg-surface-alt"
               >
                 {cfg.secondaryCta.label}
               </Link>
               <Link
                 href={cfg.primaryCta.href}
                 onClick={closeMobile}
-                className="flex w-full items-center justify-center rounded-full bg-[#C9873B] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#B5772F]"
+                className="btn-3d-primary flex w-full items-center justify-center px-5 py-3 text-sm text-white"
               >
                 {cfg.primaryCta.label}
               </Link>

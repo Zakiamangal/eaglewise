@@ -75,14 +75,14 @@ export function CtaStrip({
             <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={primaryHref}
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95 md:px-8 md:py-3.5 md:text-base"
+              className="btn-3d-primary group inline-flex items-center gap-2 px-6 py-3 text-sm text-primary-foreground md:px-8 md:py-3.5 md:text-base"
             >
               {primaryLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href={secondaryHref}
-              className="rounded-full border border-secondary-foreground/30 px-6 py-3 text-sm font-semibold transition hover:bg-secondary-foreground/10 md:px-8 md:py-3.5 md:text-base"
+              className="btn-3d-secondary-dark border border-secondary-foreground/30 px-6 py-3 text-sm md:px-8 md:py-3.5 md:text-base hover:bg-secondary-foreground/10"
             >
               {secondaryLabel}
             </Link>

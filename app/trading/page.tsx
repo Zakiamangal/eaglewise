@@ -183,13 +183,13 @@ export default function TradingHomePage() {
                   >
                     <Link
                       href="/trading/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-[#C9873B] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#B5772F]"
+                      className="btn-3d-primary inline-flex items-center justify-center px-8 py-3.5 text-sm text-white"
                     >
                       Partner with us
                     </Link>
                     <Link
                       href="/trading/markets"
-                      className="inline-flex items-center justify-center rounded-full border border-white bg-white px-8 py-3.5 text-sm font-semibold text-[#070d1a] shadow-sm transition hover:bg-white/95 hover:text-[#070d1a]"
+                      className="btn-3d-white inline-flex items-center justify-center border border-white bg-white px-8 py-3.5 text-sm font-semibold text-[#070d1a]"
                     >
                       View markets
                     </Link>
@@ -258,7 +258,7 @@ export default function TradingHomePage() {
                   </p>
                   <Link
                     href={block.href}
-                    className="mt-8 inline-flex items-center justify-center rounded-full bg-[#C9873B] px-8 py-3 text-sm font-semibold text-white transition hover:bg-[#B5772F]"
+                    className="btn-3d-primary mt-8 inline-flex items-center justify-center px-8 py-3 text-sm text-white"
                   >
                     {block.cta}
                   </Link>
@@ -546,13 +546,13 @@ export default function TradingHomePage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/trading/contact"
-                    className="inline-flex rounded-full bg-[#C9873B] px-8 py-3 text-sm font-semibold text-white transition hover:bg-[#B5772F]"
+                    className="btn-3d-primary inline-flex px-8 py-3 text-sm text-white"
                   >
                     Contact trading team
                   </Link>
                   <Link
                     href="/trading/products"
-                    className="inline-flex rounded-full border border-neutral-200 px-8 py-3 text-sm font-semibold text-foreground shadow-sm transition hover:shadow-md hover:text-[#C9873B]"
+                    className="btn-3d-secondary inline-flex border border-neutral-200 px-8 py-3 text-sm text-foreground hover:text-[#C9873B]"
                   >
                     Product catalogue
                   </Link>

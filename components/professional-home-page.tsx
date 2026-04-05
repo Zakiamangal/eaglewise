@@ -185,14 +185,14 @@ export default function ProfessionalHomePage() {
                 >
                   <Link
                     href="/professional/contact"
-                    className="group relative inline-flex h-11 items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C9873B] via-[#F59E0B] to-[#0EA5E9] px-6 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(14,165,233,0.3)] md:h-12 md:px-8 md:text-base"
+                    className="btn-3d-primary group relative inline-flex h-11 items-center justify-center gap-2 overflow-hidden px-6 text-sm text-white md:h-12 md:px-8 md:text-base"
                   >
                     <span>Request Consultation</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/professional/services"
-                    className="glass-card inline-flex h-11 items-center justify-center px-6 text-sm font-semibold !text-gray-300 transition-all hover:bg-white/15 hover:!text-white md:h-12 md:px-8 md:text-base"
+                    className="btn-3d-secondary-dark glass-card inline-flex h-11 items-center justify-center px-6 text-sm !text-gray-300 hover:bg-white/15 hover:!text-white md:h-12 md:px-8 md:text-base"
                   >
                     View Services
                   </Link>
@@ -528,7 +528,7 @@ export default function ProfessionalHomePage() {
           <div className="mt-8 text-center">
             <Link
               href="/professional/testimonials"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 glass-card px-6 py-3 text-sm font-semibold text-white transition hover:border-accent-teal/40 hover:text-accent-teal"
+              className="btn-3d-secondary-dark inline-flex items-center gap-2 border border-white/10 glass-card px-6 py-3 text-sm text-white hover:border-accent-teal/40 hover:text-accent-teal"
             >
               View all testimonials
               <ArrowRight className="h-4 w-4" />
