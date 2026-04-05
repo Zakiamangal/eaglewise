@@ -158,7 +158,7 @@ export default function ProfessionalHomePage() {
               >
                 <motion.p
                   variants={fadeInUp}
-                  className="mb-4 inline-flex rounded-full border border-white/5 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#C9873B] backdrop-blur-md"
+                  className="mb-4 inline-flex rounded-full border border-white/5 bg-white/10 px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-[#C9873B] backdrop-blur-md leading-normal"
                 >
                   Professional Services · Eaglewise
                 </motion.p>
