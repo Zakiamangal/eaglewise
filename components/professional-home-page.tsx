@@ -149,7 +149,7 @@ export default function ProfessionalHomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
 
           <div className="relative z-10">
-            <div className="container-shell pb-14 pt-28 md:pb-20 md:pt-32">
+            <div className="container-shell pb-24 pt-28 md:pb-28 md:pt-32">
               <motion.div
                 initial="hidden"
                 animate="visible"
