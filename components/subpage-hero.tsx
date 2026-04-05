@@ -39,7 +39,7 @@ export function SubpageHero({
 }: SubpageHeroProps) {
   return (
     <section className="bg-white pb-0 pt-0 text-white">
-      <div className="relative min-h-[min(58vh,520px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(55vh,580px)] md:rounded-b-[3rem]">
+      <div className="relative min-h-[min(65vh,600px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(60vh,640px)] md:rounded-b-[3rem]">
         <motion.div
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
