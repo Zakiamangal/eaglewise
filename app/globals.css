@@ -15,6 +15,11 @@ html {
   --secondary: #070d1a;
   --secondary-foreground: #ffffff;
   --border: #d9dee6;
+  --accent-teal: #0EA5E9;
+  --accent-purple: #8B5CF6;
+  --accent-rose: #F43F5E;
+  --accent-amber: #F59E0B;
+  --accent-emerald: #10B981;
 }
 
 @theme inline {
@@ -28,6 +33,11 @@ html {
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-border: var(--border);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-emerald: var(--accent-emerald);
   --font-sans: var(--font-gilroy);
   --font-mono: var(--font-geist-mono);
 }
@@ -127,4 +137,197 @@ a {
 
 .pulse-ring:hover {
   animation: pulseRing 1.5s ease-in-out infinite;
+}
+
+/* ─── 3D Colorful Makeover ─── */
+
+/* Animated dark mesh gradient for hero sections */
+.hero-mesh-bg {
+  background: linear-gradient(
+    135deg,
+    #070d1a 0%,
+    #0c1a3a 20%,
+    #0f1f4d 35%,
+    #0a1628 50%,
+    #091230 65%,
+    #0d1e44 80%,
+    #070d1a 100%
+  );
+  background-size: 400% 400%;
+  animation: heroMesh 18s ease infinite;
+}
+
+@keyframes heroMesh {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(7, 13, 26, 0.06);
+}
+
+/* 3D perspective container */
+.perspective-container {
+  perspective: 1000px;
+}
+
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.orb-teal {
+  background: var(--accent-teal);
+}
+
+.orb-purple {
+  background: var(--accent-purple);
+}
+
+.orb-rose {
+  background: var(--accent-rose);
+}
+
+.orb-amber {
+  background: var(--accent-amber);
+}
+
+.orb-emerald {
+  background: var(--accent-emerald);
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  33% { transform: translateY(-20px) scale(1.05); }
+  66% { transform: translateY(10px) scale(0.95); }
+}
+
+/* Section divider — rainbow gradient line */
+.section-divider-gradient {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-teal),
+    var(--accent-purple),
+    var(--accent-rose),
+    var(--accent-amber),
+    var(--accent-emerald),
+    transparent
+  );
+  border: none;
+  margin: 0;
+}
+
+/* Gradient border using mask technique */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--accent-teal),
+    var(--accent-purple),
+    var(--accent-rose),
+    var(--accent-amber)
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Animated rainbow gradient text */
+.text-gradient-vibrant {
+  background: linear-gradient(
+    90deg,
+    var(--accent-teal),
+    var(--accent-purple),
+    var(--accent-rose),
+    var(--accent-amber),
+    var(--accent-teal)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientTextShift 4s linear infinite;
+}
+
+@keyframes gradientTextShift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Card gradient top stripes */
+.card-stripe-teal-purple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+}
+
+.card-stripe-amber-rose::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: linear-gradient(90deg, var(--accent-amber), var(--accent-rose));
+}
+
+.card-stripe-emerald-teal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: linear-gradient(90deg, var(--accent-emerald), var(--accent-teal));
+}
+
+/* Accessibility: disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-mesh-bg,
+  .orb,
+  .text-gradient-vibrant,
+  .gradient-accent::before,
+  .animated-bg {
+    animation: none !important;
+  }
 }

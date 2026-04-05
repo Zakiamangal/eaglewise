@@ -9,6 +9,7 @@ import {
   Award,
   Building2,
   Handshake,
+  Play,
   Star,
   TrendingUp,
 } from "lucide-react";
@@ -331,6 +332,62 @@ export default function TradingHomePage() {
                 </motion.article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ─── Video Showcase — Kera Look ─── */}
+        <section className="relative overflow-hidden bg-neutral-50/60 py-16 md:py-24">
+          {/* Floating orbs behind video section */}
+          <div className="orb orb-purple w-[400px] h-[400px] -top-32 -right-20 z-0" />
+          <div className="orb orb-teal w-[300px] h-[300px] bottom-0 -left-20 z-0" style={{ animationDelay: "5s" }} />
+
+          <div className="container-shell relative z-10">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeInUp}
+              className="mx-auto max-w-3xl text-center"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-teal">
+                Product showcase
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+                Kera Look — See our products
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Watch product showcases from our distribution partners — Kera Look
+                hair care, Efolia fragrances, and more from the Khan Naseri Trading
+                network.
+              </p>
+            </motion.div>
+
+            {/* Featured video */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={fadeInUp}
+              className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)] md:rounded-3xl"
+            >
+              <video
+                controls
+                preload="metadata"
+                poster="/videos/keralook-poster.png"
+                className="aspect-video w-full bg-black"
+              >
+                <source src="/videos/keralook.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 pointer-events-none md:p-6">
+                <div className="flex items-center gap-2">
+                  <Play className="h-4 w-4 text-white/80" />
+                  <p className="text-sm font-semibold text-white">
+                    Kera Look — Product Showcase by Khan Naseri Trading
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
