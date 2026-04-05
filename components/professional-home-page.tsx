@@ -168,7 +168,7 @@ export default function ProfessionalHomePage() {
                   className="text-[1.75rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.25rem] md:text-4xl lg:text-[3.25rem]"
                 >
                   Professional consultancy, <br />
-                  <span className="text-gradient-vibrant">UAE-based, internationally relevant.</span>
+                  <span className="text-white/70">UAE-based, internationally relevant.</span>
                 </motion.h1>
 
                 <motion.p
