@@ -421,7 +421,7 @@ export default function TradingHomePage() {
                 controls
                 preload="auto"
                 poster="/videos/keralook-poster.png"
-                className="aspect-video w-full bg-black"
+                className="aspect-video w-full rounded-2xl bg-surface object-cover md:rounded-3xl"
               >
                 <source src="/videos/keralook.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
