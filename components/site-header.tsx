@@ -71,7 +71,9 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+      className={`sticky top-0 border-b transition-all duration-300 ${
+        mobileOpen ? "z-[105]" : "z-50"
+      } ${
         scrolled
           ? "border-border/70 bg-surface shadow-[0_1px_8px_rgba(7,13,26,0.06)]"
           : "border-transparent bg-surface/95 backdrop-blur-sm"
@@ -170,7 +172,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#C9873B]/30 bg-surface text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_16px_rgba(201,135,59,0.3)] hover:scale-105 lg:hidden ${mobileOpen ? "relative z-[110]" : ""}`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#C9873B]/30 bg-surface text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_16px_rgba(201,135,59,0.3)] hover:scale-105 lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
