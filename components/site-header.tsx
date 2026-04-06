@@ -162,7 +162,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-alt lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#C9873B]/30 bg-surface text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_16px_rgba(201,135,59,0.3)] hover:scale-105 lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -186,12 +186,12 @@ export function SiteHeader() {
             aria-label="Close menu"
             onClick={closeMobile}
           />
-          <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-surface shadow-[0_0_40px_rgba(7,13,26,0.15)]">
-            <div className="flex items-center justify-between border-b border-border/80 px-4 py-4">
+          <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-surface shadow-[0_0_40px_rgba(7,13,26,0.15)] border-l-2 border-l-[#C9873B]/20">
+            <div className="flex items-center justify-between border-b border-[#C9873B]/20 bg-gradient-to-r from-[#C9873B]/5 to-transparent px-4 py-4">
               <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#C9873B]">Menu</p>
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-surface-alt"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#C9873B]/30 text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_12px_rgba(201,135,59,0.25)] hover:scale-105"
                 aria-label="Close menu"
                 onClick={closeMobile}
               >
@@ -291,7 +291,7 @@ export function SiteHeader() {
               </div>
             </nav>
 
-            <div className="border-t border-border/80 bg-surface-alt/80 p-4">
+            <div className="border-t border-[#C9873B]/20 bg-gradient-to-t from-[#C9873B]/5 to-surface p-4">
               <Link
                 href={cfg.secondaryCta.href}
                 onClick={closeMobile}
