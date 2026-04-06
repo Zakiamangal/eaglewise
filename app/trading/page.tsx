@@ -414,8 +414,12 @@ export default function TradingHomePage() {
               className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)] md:rounded-3xl"
             >
               <video
+                autoPlay
+                muted
+                loop
+                playsInline
                 controls
-                preload="metadata"
+                preload="auto"
                 poster="/videos/keralook-poster.png"
                 className="aspect-video w-full bg-black"
               >
