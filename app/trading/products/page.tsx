@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
-import { khanNaseriProductHighlights } from "@/lib/khan-naseri-trading";
+import { khanNaseriImages } from "@/lib/khan-naseri-trading";
 import { Sparkles, Store, Globe } from "lucide-react";
 
 const heroSlides = [
@@ -63,15 +63,25 @@ const stagger = {
 
 export default function TradingProductsPage() {
   const [slideIdx, setSlideIdx] = useState(0);
+  const [partnerIdx, setPartnerIdx] = useState(0);
 
   const nextSlide = useCallback(() => {
     setSlideIdx((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const nextPartner = useCallback(() => {
+    setPartnerIdx((prev) => (prev + 1) % khanNaseriImages.length);
   }, []);
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
   }, [nextSlide]);
+
+  useEffect(() => {
+    const timer = setInterval(nextPartner, 4000);
+    return () => clearInterval(timer);
+  }, [nextPartner]);
 
   return (
     <SiteShell>
@@ -174,24 +184,30 @@ export default function TradingProductsPage() {
           title="Afghanistan — partner brands in market"
           description="Reference visuals from Khan Naseri Trading Company's public LinkedIn activity: KERA LOOK hair care, Efolia fragrances, Shavele skincare, and My Perfume / Arabiyat lines — wholesale and retail, with nationwide reach."
         >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {khanNaseriProductHighlights.map((item) => (
-              <figure
-                key={item.src}
-                className="group overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]"
-              >
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+          <div className="relative mx-auto max-w-3xl">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/3] overflow-hidden rounded-[2rem] bg-neutral-50 shadow-[0_20px_60px_rgba(7,13,26,0.08)]">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={partnerIdx}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -40 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
                   <Image
-                    src={item.src}
-                    alt={item.alt}
+                    src={khanNaseriImages[partnerIdx].src}
+                    alt={khanNaseriImages[partnerIdx].alt}
                     fill
-                    className="object-cover object-center transition duration-300 group-hover:scale-[1.02]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-contain object-center"
+                    sizes="(max-width: 768px) 100vw, 720px"
                   />
-                </div>
-                <figcaption className="px-3 py-2.5 text-xs font-medium text-muted-foreground">{item.caption}</figcaption>
-              </figure>
-            ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <p className="mt-4 text-center text-sm font-medium text-muted-foreground">
+              {khanNaseriImages[partnerIdx].caption}
+            </p>
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Full gallery and partner context:{" "}
