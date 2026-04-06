@@ -51,6 +51,8 @@ export function SubpageHero({
             alt={imageAlt}
             fill
             priority
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxYTFhMmUiLz48L3N2Zz4="
             className={`object-cover ${imagePositionClassName}`}
             sizes="100vw"
           />
