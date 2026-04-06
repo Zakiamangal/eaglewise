@@ -2,8 +2,6 @@ import type { ReactNode } from "react";
 import { ModeSwitcher } from "@/components/mode-switcher";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ThemeToggle } from "@/components/theme-toggle";
-
 type SiteShellProps = {
   children: ReactNode;
 };
@@ -19,7 +17,6 @@ export function SiteShell({ children }: SiteShellProps) {
       </div>
       <main className="flex-1">{children}</main>
       <SiteFooter />
-      <ThemeToggle />
     </>
   );
 }
