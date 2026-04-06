@@ -25,7 +25,7 @@ const staggerHeader: Variants = {
 
 export function Section({ id, eyebrow, title, description, children, className }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-36 py-16 md:py-24 ${className ?? ""}`}>
+    <section id={id} aria-labelledby={id ? `${id}-heading` : undefined} className={`scroll-mt-36 py-16 md:py-24 ${className ?? ""}`}>
       <div className="container-shell">
         <motion.div
           initial="hidden"
