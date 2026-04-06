@@ -147,17 +147,19 @@ export function SiteHeader() {
                         <ArrowUpRight className="h-4 w-4" />
                       </Link>
                     </div>
-                    <div className="grid gap-2">
-                      {menuItems.map((menuItem) => (
-                        <Link
-                          key={`${item.href}-${menuItem.href}-${menuItem.label}`}
-                          href={menuItem.href}
-                          className={`nav-menu-item nav-menu-item-${accent} rounded-xl px-3 py-3`}
-                        >
-                          <p className="nav-menu-label text-sm font-semibold text-foreground">{menuItem.label}</p>
-                          <p className="mt-1 text-xs text-muted-foreground">{menuItem.description}</p>
-                        </Link>
-                      ))}
+                    <div className="nav-marquee-track overflow-hidden">
+                      <div className="nav-marquee-inner flex gap-3">
+                        {[...menuItems, ...menuItems].map((menuItem, mIdx) => (
+                          <Link
+                            key={`${item.href}-${menuItem.href}-${menuItem.label}-${mIdx}`}
+                            href={menuItem.href}
+                            className={`nav-menu-item nav-menu-item-${accent} shrink-0 w-[220px] rounded-xl px-3 py-3`}
+                          >
+                            <p className="nav-menu-label text-sm font-semibold text-foreground">{menuItem.label}</p>
+                            <p className="mt-1 text-xs text-muted-foreground">{menuItem.description}</p>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
