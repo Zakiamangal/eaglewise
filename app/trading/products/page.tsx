@@ -1,11 +1,26 @@
+"use client";
+
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { SubpageHero } from "@/components/subpage-hero";
 import { khanNaseriProductHighlights } from "@/lib/khan-naseri-trading";
-import { Sparkles, Store, Globe } from "lucide-react";
+import { Sparkles, Store, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+
+const productSlides = [
+  { src: "/products/kera-look-range.jpg", alt: "Kera Look — full Hair Repair System product range" },
+  { src: "/products/kera-look-shampoo.jpg", alt: "Kera Look Shampoo — professional care at home" },
+  { src: "/products/kera-look-mask.jpg", alt: "Kera Look Hair Mask — deep repair treatment" },
+  { src: "/products/kera-look-serum.jpg", alt: "Kera Look Nano Retinol Face Serum" },
+  { src: "/products/efolia-guardian.jpg", alt: "Efolia Guardian Intense — Eau de Parfum" },
+  { src: "/products/bakhoor-hayati.jpg", alt: "Bakhoor Hayati — premium incense" },
+  { src: "/products/perfume-collection.jpg", alt: "Premium perfume collection — Oud and fragrances" },
+  { src: "/products/al-faris-perfume.jpg", alt: "Al Faris — luxury perfume by Khan Naseri Trading" },
+];
 
 const supplierLines = [
   {
@@ -38,6 +53,21 @@ const channels = [
 ];
 
 export default function TradingProductsPage() {
+  const [slideIdx, setSlideIdx] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setSlideIdx((prev) => (prev + 1) % productSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setSlideIdx((prev) => (prev - 1 + productSlides.length) % productSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   return (
     <SiteShell>
       <div className="bg-white text-foreground">
@@ -50,6 +80,94 @@ export default function TradingProductsPage() {
           title="Sourcing, exports, trade and partnership"
           subtitle="Consumer goods from named UAE supplier lines, sold through major marketplaces and supported by regional distribution partners."
         />
+
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-4">
+          <div className="section-divider-gradient" />
+        </div>
+
+        {/* ─── Product Slideshow ─── */}
+        <section className="relative overflow-hidden py-12 md:py-16">
+          <div className="orb orb-amber w-[400px] h-[400px] -top-32 -right-20 z-0" />
+          <div className="orb orb-teal w-[300px] h-[300px] bottom-0 -left-20 z-0" style={{ animationDelay: "5s" }} />
+
+          <div className="container-shell relative z-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-teal">
+                Product showcase
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+                Our product lines
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Kera Look hair care, Efolia fragrances, Bakhoor incense, and premium perfumes — distributed by Khan Naseri Trading across 34 provinces.
+              </p>
+            </div>
+
+            <div className="relative mx-auto mt-10 max-w-3xl">
+              {/* Slideshow container */}
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)]">
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={slideIdx}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={productSlides[slideIdx].src}
+                      alt={productSlides[slideIdx].alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 720px"
+                      priority={slideIdx === 0}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Nav arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
+                  aria-label="Previous product"
+                >
+                  <ChevronLeft className="h-5 w-5 text-foreground" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
+                  aria-label="Next product"
+                >
+                  <ChevronRight className="h-5 w-5 text-foreground" />
+                </button>
+              </div>
+
+              {/* Dot indicators */}
+              <div className="mt-6 flex items-center justify-center gap-2">
+                {productSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSlideIdx(idx)}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      idx === slideIdx
+                        ? "w-8 bg-primary"
+                        : "w-2.5 bg-border hover:bg-muted-foreground"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
+
         <Section
           id="supplier-lines"
           className="bg-white"
