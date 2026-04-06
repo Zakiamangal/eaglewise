@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { getSiteMode, modeConfig, navMenusByMode } from "@/lib/site";
 
+/** Each nav position gets a distinct accent color for hover effects. */
+const navAccentColors = ["teal", "amber", "emerald", "purple", "rose"] as const;
+
 export function SiteHeader() {
   const pathname = usePathname();
   const mode = getSiteMode(pathname);
@@ -79,19 +82,20 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden min-w-0 items-center gap-1 lg:flex" aria-label="Main">
-          {cfg.navLinks.map((item) => {
+          {cfg.navLinks.map((item, idx) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             const menuItems = navMenus[item.href] ?? [];
+            const accent = navAccentColors[idx % navAccentColors.length];
 
             if (menuItems.length > 0) {
               return (
                 <div key={item.href} className="group relative py-2">
                   <Link
                     href={item.href}
-                    className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium leading-none transition ${
+                    className={`nav-link-${accent} whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium leading-none transition ${
                       isActive
                         ? "!border-[#C9873B]/25 !bg-[#C9873B]/10 !font-semibold !text-[#C9873B] backdrop-blur"
-                        : "border-transparent text-foreground/85 hover:bg-surface-alt hover:text-foreground"
+                        : "border-transparent text-foreground/85"
                     }`}
                   >
                     {item.label}
@@ -99,12 +103,12 @@ export function SiteHeader() {
 
                   <div className="absolute inset-x-0 top-full h-5" />
 
-                  <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 translate-y-2 rounded-[1.6rem] border border-border/60 bg-surface/95 p-6 opacity-0 shadow-[0_16px_40px_rgba(7,13,26,0.12)] backdrop-blur-sm transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className={`nav-dropdown-${accent} pointer-events-none absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 translate-y-2 rounded-[1.6rem] border border-border/60 bg-surface/95 p-6 opacity-0 shadow-[0_16px_40px_rgba(7,13,26,0.12)] backdrop-blur-sm transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100`}>
                     <div className="mb-4 flex items-center justify-between">
                       <p className="text-xl font-semibold text-foreground">{item.label}</p>
                       <Link
                         href={item.href}
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-[#C9873B]"
+                        className={`nav-viewall-${accent} inline-flex items-center gap-1 text-sm font-semibold`}
                       >
                         View all
                         <ArrowUpRight className="h-4 w-4" />
@@ -115,9 +119,9 @@ export function SiteHeader() {
                         <Link
                           key={`${item.href}-${menuItem.href}-${menuItem.label}`}
                           href={menuItem.href}
-                          className="rounded-xl px-3 py-3 transition hover:bg-surface-alt"
+                          className={`nav-menu-item nav-menu-item-${accent} rounded-xl px-3 py-3`}
                         >
-                          <p className="text-sm font-semibold text-foreground">{menuItem.label}</p>
+                          <p className="nav-menu-label text-sm font-semibold text-foreground">{menuItem.label}</p>
                           <p className="mt-1 text-xs text-muted-foreground">{menuItem.description}</p>
                         </Link>
                       ))}
@@ -131,10 +135,10 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium leading-none transition ${
+                className={`nav-link-${accent} whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium leading-none transition ${
                   isActive
                     ? "!border-[#C9873B]/25 !bg-[#C9873B]/10 !font-semibold !text-[#C9873B] backdrop-blur"
-                    : "border-transparent text-foreground/85 hover:bg-surface-alt hover:text-foreground"
+                    : "border-transparent text-foreground/85"
                 }`}
               >
                 {item.label}
@@ -201,11 +205,12 @@ export function SiteHeader() {
               aria-label="Main"
             >
               <div className="flex flex-col gap-1">
-                {cfg.navLinks.map((item) => {
+                {cfg.navLinks.map((item, idx) => {
                   const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
                   const menuItems = navMenus[item.href] ?? [];
                   const hasSubmenu = menuItems.length > 0;
                   const expanded = mobileExpandedHref === item.href;
+                  const mobileAccent = navAccentColors[idx % navAccentColors.length];
 
                   return (
                     <div key={item.href} className="border-b border-border/60 py-2 last:border-b-0">
@@ -250,9 +255,9 @@ export function SiteHeader() {
                                   key={`${item.href}-${menuItem.href}-${menuItem.label}`}
                                   href={menuItem.href}
                                   onClick={closeMobile}
-                                  className="block rounded-lg py-2 pl-2 pr-1 transition hover:bg-surface-alt"
+                                  className={`nav-menu-item nav-menu-item-${mobileAccent} block rounded-lg py-2 pl-2 pr-1`}
                                 >
-                                  <span className="text-sm font-medium text-foreground">{menuItem.label}</span>
+                                  <span className="nav-menu-label text-sm font-medium text-foreground">{menuItem.label}</span>
                                   <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
                                     {menuItem.description}
                                   </span>
