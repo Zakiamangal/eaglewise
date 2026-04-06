@@ -39,7 +39,7 @@ export function SubpageHero({
 }: SubpageHeroProps) {
   return (
     <section className="bg-white pb-0 pt-0 text-white">
-      <div className="relative min-h-[min(65vh,600px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(60vh,640px)] md:rounded-b-[3rem]">
+      <div className="relative min-h-[min(70vh,640px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(65vh,680px)] md:rounded-b-[3rem]">
         <motion.div
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -71,7 +71,7 @@ export function SubpageHero({
           <div
             className={
               variant === "professional"
-                ? "container-shell w-full pb-14 pt-32 md:pb-20 md:pt-24"
+                ? "container-shell w-full pb-20 pt-32 md:pb-24 md:pt-24"
                 : "container-shell w-full pb-16 pt-32 md:pb-20 md:pt-28"
             }
           >
