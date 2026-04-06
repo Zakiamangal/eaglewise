@@ -65,8 +65,8 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-50 border-b transition-all duration-300 ${
         scrolled
-          ? "border-border/70 bg-white shadow-[0_1px_8px_rgba(7,13,26,0.06)]"
-          : "border-transparent bg-white/95 backdrop-blur-sm"
+          ? "border-border/70 bg-surface shadow-[0_1px_8px_rgba(7,13,26,0.06)]"
+          : "border-transparent bg-surface/95 backdrop-blur-sm"
       }`}
     >
       <div className="container-shell flex min-h-[76px] items-center justify-between gap-3 py-2">
@@ -186,7 +186,7 @@ export function SiteHeader() {
             aria-label="Close menu"
             onClick={closeMobile}
           />
-          <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-[0_0_40px_rgba(7,13,26,0.15)]">
+          <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-surface shadow-[0_0_40px_rgba(7,13,26,0.15)]">
             <div className="flex items-center justify-between border-b border-border/80 px-4 py-4">
               <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#C9873B]">Menu</p>
               <button
@@ -291,11 +291,11 @@ export function SiteHeader() {
               </div>
             </nav>
 
-            <div className="border-t border-border/80 bg-neutral-50/80 p-4">
+            <div className="border-t border-border/80 bg-surface-alt/80 p-4">
               <Link
                 href={cfg.secondaryCta.href}
                 onClick={closeMobile}
-                className="btn-3d-secondary mb-3 flex w-full items-center justify-center border border-border bg-white px-5 py-3 text-sm text-foreground hover:bg-surface-alt"
+                className="btn-3d-secondary mb-3 flex w-full items-center justify-center border border-border bg-surface px-5 py-3 text-sm text-foreground hover:bg-surface-alt"
               >
                 {cfg.secondaryCta.label}
               </Link>
