@@ -131,6 +131,7 @@ export default function ProfessionalTestimonialsPage() {
               <article
                 key={`${item.author}-${i}`}
                 className={`glass-card-light card-3d-hover ${stripeClasses[i % 3]} shrink-0 w-[320px] p-6 md:w-[380px] md:p-7`}
+                style={{ borderRadius: '1.5rem', overflow: 'hidden' }}
               >
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-1">
@@ -163,15 +164,15 @@ export default function ProfessionalTestimonialsPage() {
         title="Trusted by businesses in the UAE and beyond"
       >
         <div className="grid gap-5 md:grid-cols-3 md:gap-6">
-          <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-7" style={{ borderRadius: '1.5rem', overflow: 'hidden' }}>
             <h3 className="text-3xl font-bold text-[#C9873B]">Skylink &amp; Shanzer</h3>
             <p className="mt-2 text-sm text-muted-foreground">Companies referenced in our UAE consultancy portfolio</p>
           </article>
-          <article className="glass-card-light card-3d-hover card-stripe-amber-rose p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-amber-rose p-6 md:p-7" style={{ borderRadius: '1.5rem', overflow: 'hidden' }}>
             <h3 className="text-3xl font-bold text-[#C9873B]">10+ Lines</h3>
             <p className="mt-2 text-sm text-muted-foreground">Professional service lines from accounting to business development</p>
           </article>
-          <article className="glass-card-light card-3d-hover card-stripe-emerald-teal p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-emerald-teal p-6 md:p-7" style={{ borderRadius: '1.5rem', overflow: 'hidden' }}>
             <h3 className="text-3xl font-bold text-[#C9873B]">2025</h3>
             <p className="mt-2 text-sm text-muted-foreground">Year Eaglewise was established in the UAE</p>
           </article>
