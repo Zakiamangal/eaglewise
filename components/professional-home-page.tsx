@@ -148,7 +148,7 @@ export default function ProfessionalHomePage() {
             />
           </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-secondary/70 via-secondary/45 to-transparent" />
 
           <div className="relative z-10">
             <div className="container-shell pb-24 pt-28 md:pb-28 md:pt-32">
