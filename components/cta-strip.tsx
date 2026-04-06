@@ -64,7 +64,7 @@ export function CtaStrip({
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#C9873B] w-fit">
               <Sparkles className="h-3.5 w-3.5" />
-              Let&apos;s Build Together
+              Let&apos;s Build Together &#x2192;
             </span>
 
             <h3 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">{title}</h3>
