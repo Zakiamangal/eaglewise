@@ -19,6 +19,10 @@ export default function TradingContactPage() {
           title="Business inquiries & partnerships"
           subtitle="For trading, sourcing, distribution, and marketplace discussions, contact us through the form or our official channels."
         />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
         <Section
           id="contact-main"
           className="bg-white"
@@ -27,7 +31,7 @@ export default function TradingContactPage() {
           description="Share your company profile, product categories, volumes, and target markets. Our team will respond regarding fit and next steps."
         >
           <div className="grid gap-5 lg:grid-cols-2 lg:gap-8">
-            <article className="eagle-card p-6 md:p-8">
+            <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-8">
               <div className="flex items-center gap-3">
                 <Send className="h-5 w-5 text-[#C9873B]" />
                 <h3 className="text-xl font-bold tracking-tight">Send inquiry</h3>
@@ -35,7 +39,7 @@ export default function TradingContactPage() {
               <ContactForm formType="trading" />
             </article>
 
-            <article id="company-details" className="eagle-card scroll-mt-36 p-6 md:p-8">
+            <article id="company-details" className="glass-card-light card-3d-hover card-stripe-amber-rose scroll-mt-36 p-6 md:p-8">
               <h3 className="text-xl font-bold tracking-tight">Company details</h3>
               <ul className="mt-5 space-y-3 text-sm leading-relaxed text-muted-foreground">
                 <li>
