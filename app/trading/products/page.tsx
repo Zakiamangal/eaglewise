@@ -7,11 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
-import { SubpageHero } from "@/components/subpage-hero";
 import { khanNaseriProductHighlights } from "@/lib/khan-naseri-trading";
 import { Sparkles, Store, Globe, ChevronLeft, ChevronRight } from "lucide-react";
 
-const productSlides = [
+const heroSlides = [
   { src: "/products/kera-look-range.jpg", alt: "Kera Look — full Hair Repair System product range" },
   { src: "/products/kera-look-shampoo.jpg", alt: "Kera Look Shampoo — professional care at home" },
   { src: "/products/kera-look-mask.jpg", alt: "Kera Look Hair Mask — deep repair treatment" },
@@ -52,15 +51,25 @@ const channels = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
 export default function TradingProductsPage() {
   const [slideIdx, setSlideIdx] = useState(0);
 
   const nextSlide = useCallback(() => {
-    setSlideIdx((prev) => (prev + 1) % productSlides.length);
+    setSlideIdx((prev) => (prev + 1) % heroSlides.length);
   }, []);
 
   const prevSlide = useCallback(() => {
-    setSlideIdx((prev) => (prev - 1 + productSlides.length) % productSlides.length);
+    setSlideIdx((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
   }, []);
 
   useEffect(() => {
@@ -71,100 +80,101 @@ export default function TradingProductsPage() {
   return (
     <SiteShell>
       <div className="bg-white text-foreground">
-        <SubpageHero
-          variant="trading"
-          imageSrc="/trading/hero-products.jpg"
-          imageAlt="KERA LOOK Hair Repair System — full product range"
-          imagePositionClassName="object-[center_45%]"
-          eyebrow="Products & channels"
-          title="Sourcing, exports, trade and partnership"
-          subtitle="Consumer goods from named UAE supplier lines, sold through major marketplaces and supported by regional distribution partners."
-        />
+        {/* ─── Hero with sliding product images ─── */}
+        <section className="bg-white pb-0 pt-0 text-white">
+          <div className="relative min-h-[min(70vh,640px)] w-full min-w-0 overflow-hidden rounded-b-[2rem] md:min-h-[min(65vh,680px)] md:rounded-b-[3rem]">
+            {/* Sliding background images */}
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={slideIdx}
+                initial={{ opacity: 0, scale: 1.06 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={heroSlides[slideIdx].src}
+                  alt={heroSlides[slideIdx].alt}
+                  fill
+                  priority={slideIdx === 0}
+                  className="object-cover object-center"
+                  sizes="100vw"
+                />
+              </motion.div>
+            </AnimatePresence>
 
-        {/* ── Colorful divider ── */}
-        <div className="container-shell py-4">
-          <div className="section-divider-gradient" />
-        </div>
+            {/* Overlay gradients — lighter to show product images */}
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 via-secondary/55 to-secondary/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-secondary/15 to-transparent md:hidden" />
 
-        {/* ─── Product Slideshow ─── */}
-        <section className="relative overflow-hidden py-12 md:py-16">
-          <div className="orb orb-amber w-[400px] h-[400px] -top-32 -right-20 z-0" />
-          <div className="orb orb-teal w-[300px] h-[300px] bottom-0 -left-20 z-0" style={{ animationDelay: "5s" }} />
+            {/* Nav arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 shadow-lg backdrop-blur-sm transition hover:bg-white/40 hover:scale-110 sm:left-5 sm:h-12 sm:w-12"
+              aria-label="Previous product"
+            >
+              <ChevronLeft className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 shadow-lg backdrop-blur-sm transition hover:bg-white/40 hover:scale-110 sm:right-5 sm:h-12 sm:w-12"
+              aria-label="Next product"
+            >
+              <ChevronRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+            </button>
 
-          <div className="container-shell relative z-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-teal">
-                Product showcase
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
-                Our product lines
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-                Kera Look hair care, Efolia fragrances, Bakhoor incense, and premium perfumes — distributed by Khan Naseri Trading across 34 provinces.
-              </p>
+            {/* Text overlay */}
+            <div className="absolute inset-0 flex items-end md:items-center">
+              <div className="container-shell w-full pb-16 pt-32 md:pb-20 md:pt-28">
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={stagger}
+                  className="mx-auto max-w-2xl text-center md:mx-0 md:text-left"
+                >
+                  <motion.p
+                    variants={fadeInUp}
+                    className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#C9873B]"
+                  >
+                    Products &amp; channels
+                  </motion.p>
+                  <motion.h1
+                    variants={fadeInUp}
+                    className="mt-4 text-[2rem] font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[3.75rem]"
+                  >
+                    Sourcing, exports, trade and partnership
+                  </motion.h1>
+                  <motion.p
+                    variants={fadeInUp}
+                    className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-xl"
+                  >
+                    Consumer goods from named UAE supplier lines, sold through major marketplaces and supported by regional distribution partners.
+                  </motion.p>
+                </motion.div>
+              </div>
             </div>
 
-            <div className="relative mx-auto mt-10 max-w-3xl">
-              {/* Slideshow container */}
-              <div className="relative aspect-[3/4] sm:aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)]">
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    key={slideIdx}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={productSlides[slideIdx].src}
-                      alt={productSlides[slideIdx].alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 720px"
-                      priority={slideIdx === 0}
-                    />
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Nav arrows */}
+            {/* Dot indicators at bottom */}
+            <div className="absolute bottom-4 left-0 right-0 z-20 flex items-center justify-center gap-2 md:bottom-6">
+              {heroSlides.map((_, idx) => (
                 <button
-                  onClick={prevSlide}
-                  className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
-                  aria-label="Previous product"
-                >
-                  <ChevronLeft className="h-5 w-5 text-foreground" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
-                  aria-label="Next product"
-                >
-                  <ChevronRight className="h-5 w-5 text-foreground" />
-                </button>
-              </div>
-
-              {/* Dot indicators */}
-              <div className="mt-6 flex items-center justify-center gap-2">
-                {productSlides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSlideIdx(idx)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                      idx === slideIdx
-                        ? "w-8 bg-primary"
-                        : "w-2.5 bg-border hover:bg-muted-foreground"
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
+                  key={idx}
+                  onClick={() => setSlideIdx(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    idx === slideIdx
+                      ? "w-8 bg-[#C9873B]"
+                      : "w-2.5 bg-white/50 hover:bg-white/80"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
         </section>
 
         {/* ── Colorful divider ── */}
-        <div className="container-shell py-2">
+        <div className="container-shell py-4">
           <div className="section-divider-gradient" />
         </div>
 
@@ -197,7 +207,7 @@ export default function TradingProductsPage() {
           className="bg-white"
           eyebrow="Regional distribution"
           title="Afghanistan — partner brands in market"
-          description="Reference visuals from Khan Naseri Trading Company’s public LinkedIn activity: KERA LOOK hair care, Efolia fragrances, Shavele skincare, and My Perfume / Arabiyat lines — wholesale and retail, with nationwide reach."
+          description="Reference visuals from Khan Naseri Trading Company's public LinkedIn activity: KERA LOOK hair care, Efolia fragrances, Shavele skincare, and My Perfume / Arabiyat lines — wholesale and retail, with nationwide reach."
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {khanNaseriProductHighlights.map((item) => (
