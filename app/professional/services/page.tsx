@@ -126,7 +126,7 @@ export default function ProfessionalServicesPage() {
                 { step: "02", title: "Service Scope & Plan", desc: "We define scope, responsibilities, and timelines across accounting, compliance, and advisory workstreams." },
                 { step: "03", title: "Implementation Support", desc: "We support execution with regular follow-up, clear reporting, and practical adjustments when needed." }
               ].map((item, i) => (
-                <div key={i} className="glass-card-light card-3d-hover flex flex-col gap-5 rounded-3xl p-7 sm:flex-row md:p-9">
+                <div key={i} className={`glass-card-light card-3d-hover ${["card-stripe-teal-purple","card-stripe-amber-rose","card-stripe-emerald-teal"][i % 3]} flex flex-col gap-5 rounded-3xl p-7 sm:flex-row md:p-9`}>
                   <div className="text-3xl font-light text-muted-foreground/30 md:text-4xl">{item.step}</div>
                   <div>
                     <h3 className="text-xl font-bold">{item.title}</h3>
