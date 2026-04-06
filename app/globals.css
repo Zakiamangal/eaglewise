@@ -497,6 +497,25 @@ a {
     inset 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+/* ─── Nav Dropdown Auto-Scroll Marquee ─── */
+
+.nav-marquee-track {
+  position: relative;
+}
+
+.nav-marquee-inner {
+  animation: navMarqueeScroll 12s linear infinite;
+}
+
+.nav-marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes navMarqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ─── Nav Dropdown 3D Colorful Items ─── */
 
 .nav-menu-item {
