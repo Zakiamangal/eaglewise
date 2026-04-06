@@ -37,17 +37,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
-      suppressHydrationWarning
       className={`${gilroy.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("ebc-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}}catch(e){}})()`,
-          }}
-        />
-      </head>
       <body
         className={`min-h-full flex flex-col bg-background text-foreground ${gilroy.className}`}
       >
