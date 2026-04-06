@@ -130,7 +130,7 @@ export default function ProfessionalTestimonialsPage() {
             {marqueeCards.map((item, i) => (
               <article
                 key={`${item.author}-${i}`}
-                className={`glass-card-light card-3d-hover ${stripeClasses[i % 3]} shrink-0 w-[320px] rounded-2xl p-6 md:w-[380px] md:p-7`}
+                className={`glass-card-light card-3d-hover ${stripeClasses[i % 3]} shrink-0 w-[320px] p-6 md:w-[380px] md:p-7`}
               >
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-1">
