@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/contact-form";
+import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { SubpageHero } from "@/components/subpage-hero";
@@ -136,6 +137,18 @@ export default function ProfessionalContactPage() {
           </article>
         </div>
       </Section>
+      {/* Divider */}
+      <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
+      <CtaStrip
+        id="contact-cta"
+        title="Prefer to call or email directly?"
+        description="Reach us via phone or email for a faster response on your professional services inquiry."
+        primaryLabel="View Services"
+        primaryHref="/professional/services"
+        secondaryLabel="About Eaglewise"
+        secondaryHref="/professional/about"
+      />
     </SiteShell>
   );
 }
