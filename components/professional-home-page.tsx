@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
@@ -99,6 +100,12 @@ const landingTestimonials = [
 
 const marqueeTestimonials = [...landingTestimonials, ...landingTestimonials];
 
+const heroImages = [
+  { src: "/hero-dubai.jpg", alt: "Professional consultancy in the UAE" },
+  { src: "/home-office-dubai.jpg", alt: "Modern office workspace in Dubai" },
+  { src: "/uae-presence-team.jpg", alt: "Eaglewise team collaboration" },
+];
+
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -120,6 +127,17 @@ const staggerContainer: Variants = {
 
 /** Professional mode landing — rendered at `/` and (via redirect) replaces legacy `/professional`. */
 export default function ProfessionalHomePage() {
+  const [heroIdx, setHeroIdx] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setHeroIdx((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 6000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   return (
     <SiteShell>
       {/* ─── HERO ─── */}
@@ -132,21 +150,25 @@ export default function ProfessionalHomePage() {
           <div className="orb orb-purple w-[350px] h-[350px] top-1/2 right-0 z-0" style={{ animationDelay: "4s" }} />
           <div className="orb orb-rose w-[300px] h-[300px] bottom-0 left-1/3 z-0" style={{ animationDelay: "8s" }} />
 
-          <motion.div
-            initial={{ scale: 1.05, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/hero-dubai.jpg"
-              alt="Professional consultancy in the UAE"
-              width={1600}
-              height={900}
-              className="h-full w-full object-cover"
-              priority
-            />
-          </motion.div>
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={heroIdx}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={heroImages[heroIdx].src}
+                alt={heroImages[heroIdx].alt}
+                width={1600}
+                height={900}
+                className="h-full w-full object-cover"
+                priority={heroIdx === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
 
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/70 via-secondary/45 to-transparent" />
 
