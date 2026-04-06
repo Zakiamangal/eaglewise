@@ -17,6 +17,10 @@ export default function ProfessionalContactPage() {
         title="Business inquiries and consultancy"
         subtitle="For partnerships, consultancy services, and professional support, contact us through the form below or our official channels."
       />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section
         id="contact-main"
         className="bg-white"
@@ -25,7 +29,7 @@ export default function ProfessionalContactPage() {
         description="Tell us about your company and whether you need accounting, audit, tax, investment planning, marketing or communications advisory, project management, or business development support."
       >
         <div className="grid gap-5 lg:grid-cols-2 lg:gap-8">
-          <article className="eagle-card p-6 md:p-8">
+          <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-8">
             <div className="flex items-center gap-3">
               <Send className="h-5 w-5 text-[#C9873B]" />
               <h3 className="text-xl font-semibold">Send inquiry</h3>
@@ -33,7 +37,7 @@ export default function ProfessionalContactPage() {
             <ContactForm formType="professional" />
           </article>
 
-          <article id="company-details" className="eagle-card scroll-mt-36 p-6 md:p-8">
+          <article id="company-details" className="glass-card-light card-3d-hover card-stripe-amber-rose scroll-mt-36 p-6 md:p-8">
             <h3 className="text-xl font-semibold">Company details</h3>
             <ul className="mt-5 space-y-3 text-sm leading-7 text-muted-foreground">
               <li>
