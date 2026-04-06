@@ -96,7 +96,7 @@ export default function ProfessionalAboutPage() {
               <ClipboardList className="h-5 w-5 text-[#C9873B]" />
               <h3 className="text-2xl font-semibold">Mission</h3>
             </div>
-            <ul className="mt-3 space-y-2 text-sm leading-7 text-muted-foreground">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-muted-foreground">
               {missionPoints.map((point) => (
                 <li key={point}>{point}</li>
               ))}
