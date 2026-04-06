@@ -16,7 +16,7 @@ export function ModeSwitcher() {
   const active = getSiteMode(pathname);
 
   return (
-    <div className="border-b border-[#e0e0e0] bg-white">
+    <div className="border-b border-border bg-surface">
       <div className="container-shell flex h-8 items-center sm:h-9">
         <nav className="inline-flex h-full items-center" aria-label="Site experience">
           {modes.map((id, index) => {
@@ -24,13 +24,13 @@ export function ModeSwitcher() {
             const isActive = active === id;
             const colorStyle: CSSProperties = isActive
               ? { color: TAB_ACCENT }
-              : { color: "#000000" };
+              : { color: "var(--foreground)" };
 
             return (
               <Fragment key={id}>
                 {index > 0 ? (
                   <span
-                    className="mx-3 h-3 w-px shrink-0 bg-[#e0e0e0] sm:mx-4"
+                    className="mx-3 h-3 w-px shrink-0 bg-border sm:mx-4"
                     aria-hidden
                   />
                 ) : null}
