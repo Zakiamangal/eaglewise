@@ -571,12 +571,12 @@ a {
 .nav-link-purple:hover { color: var(--accent-purple) !important; background: rgba(139, 92, 246, 0.08) !important; box-shadow: 0 0 12px rgba(139, 92, 246, 0.15); transform: translateY(-1px); }
 .nav-link-rose:hover { color: var(--accent-rose) !important; background: rgba(244, 63, 94, 0.08) !important; box-shadow: 0 0 12px rgba(244, 63, 94, 0.15); transform: translateY(-1px); }
 
-/* Dropdown panel — glass effect with colored top gradient bar and glow */
-.nav-dropdown-teal { border-top: 3px solid var(--accent-teal); box-shadow: 0 20px 50px rgba(14, 165, 233, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
-.nav-dropdown-amber { border-top: 3px solid var(--accent-amber); box-shadow: 0 20px 50px rgba(245, 158, 11, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
-.nav-dropdown-emerald { border-top: 3px solid var(--accent-emerald); box-shadow: 0 20px 50px rgba(16, 185, 129, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
-.nav-dropdown-purple { border-top: 3px solid var(--accent-purple); box-shadow: 0 20px 50px rgba(139, 92, 246, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
-.nav-dropdown-rose { border-top: 3px solid var(--accent-rose); box-shadow: 0 20px 50px rgba(244, 63, 94, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
+/* Dropdown panel — glass effect with colored rounded border and glow */
+.nav-dropdown-teal { border: 2px solid rgba(14, 165, 233, 0.25); border-top-width: 3px; border-top-color: var(--accent-teal); border-radius: 1.6rem; box-shadow: 0 20px 50px rgba(14, 165, 233, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
+.nav-dropdown-amber { border: 2px solid rgba(245, 158, 11, 0.25); border-top-width: 3px; border-top-color: var(--accent-amber); border-radius: 1.6rem; box-shadow: 0 20px 50px rgba(245, 158, 11, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
+.nav-dropdown-emerald { border: 2px solid rgba(16, 185, 129, 0.25); border-top-width: 3px; border-top-color: var(--accent-emerald); border-radius: 1.6rem; box-shadow: 0 20px 50px rgba(16, 185, 129, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
+.nav-dropdown-purple { border: 2px solid rgba(139, 92, 246, 0.25); border-top-width: 3px; border-top-color: var(--accent-purple); border-radius: 1.6rem; box-shadow: 0 20px 50px rgba(139, 92, 246, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
+.nav-dropdown-rose { border: 2px solid rgba(244, 63, 94, 0.25); border-top-width: 3px; border-top-color: var(--accent-rose); border-radius: 1.6rem; box-shadow: 0 20px 50px rgba(244, 63, 94, 0.1), 0 8px 24px rgba(7, 13, 26, 0.08); }
 
 /* "View all" link — colored with hover glow */
 .nav-viewall-teal { color: var(--accent-teal) !important; transition: all 0.25s ease; }
