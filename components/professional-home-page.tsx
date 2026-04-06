@@ -98,7 +98,7 @@ const landingTestimonials = [
   },
 ];
 
-const marqueeTestimonials = [...landingTestimonials, ...landingTestimonials];
+const marqueeTestimonials = [...landingTestimonials, ...landingTestimonials, ...landingTestimonials, ...landingTestimonials];
 
 const heroImages = [
   { src: "/hero-dubai.jpg", alt: "Professional consultancy in the UAE" },
@@ -522,13 +522,13 @@ export default function ProfessionalHomePage() {
             <motion.div
               initial={{ x: "0%" }}
               animate={{ x: "-50%" }}
-              transition={{ duration: 34, ease: "linear", repeat: Infinity }}
-              className="flex w-max gap-4"
+              transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+              className="flex w-max gap-5"
             >
               {marqueeTestimonials.map((item, idx) => (
                 <article
                   key={`${item.author}-${item.date}-${idx}`}
-                  className="w-[300px] glass-card p-6 md:w-[360px]"
+                  className={`w-[300px] glass-card card-3d-hover p-6 md:w-[360px]`}
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-1">
