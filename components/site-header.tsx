@@ -4,7 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, X } from "lucide-react";
+
+function CurlyMenuIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="menu-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="var(--accent-teal)" />
+          <stop offset="50%" stopColor="var(--accent-purple)" />
+          <stop offset="100%" stopColor="var(--accent-rose)" />
+        </linearGradient>
+      </defs>
+      <path d="M3 7 C6 5.5, 9 8.5, 12 7 C15 5.5, 18 8.5, 21 7" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M3 12 C6 10.5, 9 13.5, 12 12 C15 10.5, 18 13.5, 21 12" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M3 17 C6 15.5, 9 18.5, 12 17 C15 15.5, 18 18.5, 21 17" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+}
 import { getSiteMode, modeConfig, navMenusByMode } from "@/lib/site";
 
 /** Each nav position gets a distinct accent color for hover effects. */
@@ -168,7 +185,7 @@ export function SiteHeader() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? <X className="h-5 w-5" strokeWidth={2} /> : <Menu className="h-5 w-5" strokeWidth={2} />}
+            {mobileOpen ? <X className="h-5 w-5" strokeWidth={2} /> : <CurlyMenuIcon className="h-6 w-6" />}
           </button>
         </div>
       </div>
