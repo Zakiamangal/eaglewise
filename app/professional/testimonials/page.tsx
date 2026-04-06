@@ -50,6 +50,10 @@ export default function ProfessionalTestimonialsPage() {
         title="Client feedback highlights"
         subtitle="Selected feedback from advisory engagements across finance, compliance, and operations."
       />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <section id="client-feedback" className="bg-gradient-to-b from-white to-neutral-50/90 py-14 md:py-20">
         <div className="container-shell">
           <div className="mx-auto mb-10 max-w-3xl text-center">
@@ -89,7 +93,7 @@ export default function ProfessionalTestimonialsPage() {
               {testimonials.map((item) => (
                 <article
                   key={item.author}
-                  className="eagle-card min-w-[310px] snap-start rounded-2xl p-6 md:min-w-[360px] md:p-7"
+                  className="glass-card-light card-3d-hover min-w-[310px] snap-start rounded-2xl p-6 md:min-w-[360px] md:p-7"
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-1">
@@ -112,6 +116,9 @@ export default function ProfessionalTestimonialsPage() {
         </div>
       </section>
 
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section
         id="trusted-metrics"
         className="bg-white"
@@ -119,20 +126,23 @@ export default function ProfessionalTestimonialsPage() {
         title="Trusted by businesses in the UAE and beyond"
       >
         <div className="grid gap-5 md:grid-cols-3 md:gap-6">
-          <article className="eagle-card p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-7">
             <h3 className="text-3xl font-bold text-[#C9873B]">Skylink &amp; Shanzer</h3>
             <p className="mt-2 text-sm text-muted-foreground">Companies referenced in our UAE consultancy portfolio</p>
           </article>
-          <article className="eagle-card p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-amber-rose p-6 md:p-7">
             <h3 className="text-3xl font-bold text-[#C9873B]">10+ Lines</h3>
             <p className="mt-2 text-sm text-muted-foreground">Professional service lines from accounting to business development</p>
           </article>
-          <article className="eagle-card p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-emerald-teal p-6 md:p-7">
             <h3 className="text-3xl font-bold text-[#C9873B]">2025</h3>
             <p className="mt-2 text-sm text-muted-foreground">Year Eaglewise was established in the UAE</p>
           </article>
         </div>
       </Section>
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
 
       <CtaStrip
         id="testimonials-cta"
