@@ -89,24 +89,36 @@ const partnerHighlights = [
   },
 ];
 
+const stripeClasses = [
+  "card-stripe-teal-purple",
+  "card-stripe-amber-rose",
+  "card-stripe-emerald-teal",
+];
+
 const partnerExpectItems = [
   {
     icon: Handshake,
     title: "Transparent coordination",
     description:
       "Clear alignment with suppliers and distributors—expectations stay visible from sourcing through delivery.",
+    accent: "text-accent-teal",
+    accentBg: "bg-accent-teal/10",
   },
   {
     icon: Building2,
     title: "UAE-registered foundation",
     description:
       "Operations established March 2025 under UAE registration, with governance suited to B2B trade.",
+    accent: "text-accent-purple",
+    accentBg: "bg-accent-purple/10",
   },
   {
     icon: TrendingUp,
     title: "Growth across channels",
     description:
       "Strategic expansion through trade partnerships and e-commerce—marketplaces and wholesale in one network.",
+    accent: "text-accent-emerald",
+    accentBg: "bg-accent-emerald/10",
   },
 ];
 
@@ -131,6 +143,8 @@ const landingTestimonials = [
   },
 ];
 
+const marqueeTestimonials = [...landingTestimonials, ...landingTestimonials];
+
 export default function TradingHomePage() {
   return (
     <SiteShell>
@@ -146,6 +160,12 @@ export default function TradingHomePage() {
               priority
               sizes="100vw"
             />
+            {/* 3D perspective grid floor */}
+            <div className="hero-3d-grid" />
+            {/* Floating orbs */}
+            <div className="orb orb-teal w-[400px] h-[400px] -top-32 -left-20 z-0" />
+            <div className="orb orb-purple w-[350px] h-[350px] top-1/2 right-0 z-0" style={{ animationDelay: "4s" }} />
+            <div className="orb orb-rose w-[300px] h-[300px] bottom-0 left-1/3 z-0" style={{ animationDelay: "8s" }} />
             {/* Same left-to-right scrim as Professional tab for readable hero copy */}
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/98 via-secondary/85 to-secondary/30" />
             {/* Extra bottom weight on small screens where copy is centered lower */}
@@ -215,6 +235,11 @@ export default function TradingHomePage() {
           </motion.div>
         </section>
 
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-4">
+          <div className="section-divider-gradient" />
+        </div>
+
         {/* Centered intro — partnerships page pattern */}
         <section className="bg-white px-4 py-16 text-center md:py-24">
           <motion.div
@@ -233,6 +258,11 @@ export default function TradingHomePage() {
             </p>
           </motion.div>
         </section>
+
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
 
         {/* Alternating split sections */}
         {models.map((block, index) => (
@@ -268,7 +298,7 @@ export default function TradingHomePage() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-60px" }}
                   variants={fadeInUp}
-                  className={`relative aspect-[4/3] w-full overflow-hidden shadow-[0_24px_60px_rgba(7,13,26,0.08)] ${block.imageRounded} ${
+                  className={`relative aspect-[4/3] w-full overflow-hidden shadow-[0_24px_60px_rgba(7,13,26,0.08)] gradient-border card-3d-hover ${block.imageRounded} ${
                     block.reverse ? "md:order-1" : "md:order-2"
                   }`}
                 >
@@ -285,9 +315,17 @@ export default function TradingHomePage() {
           </section>
         ))}
 
-        {/* Partner highlights — above “What partners can expect” */}
-        <section className="bg-white px-4 py-14 md:py-20">
-          <div className="container-shell">
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
+
+        {/* Partner highlights — above "What partners can expect" */}
+        <section className="relative overflow-hidden px-4 py-14 md:py-20">
+          {/* Floating orbs */}
+          <div className="orb orb-amber w-[500px] h-[500px] -top-40 -right-40 z-0" />
+          <div className="orb orb-emerald w-[400px] h-[400px] bottom-0 -left-40 z-0" style={{ animationDelay: "6s" }} />
+          <div className="container-shell relative z-10">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -305,14 +343,14 @@ export default function TradingHomePage() {
               </p>
             </motion.div>
             <div className="mt-12 grid gap-10 md:mt-14 md:grid-cols-3 md:gap-8 lg:gap-10">
-              {partnerHighlights.map((item) => (
+              {partnerHighlights.map((item, idx) => (
                 <motion.article
                   key={item.title}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-40px" }}
                   variants={fadeInUp}
-                  className="flex flex-col"
+                  className={`group relative overflow-hidden rounded-[2rem] glass-card-light p-4 transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)] ${stripeClasses[idx]}`}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f0f0f0] md:rounded-3xl">
                     <Image
@@ -323,10 +361,10 @@ export default function TradingHomePage() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
-                  <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground md:text-xl">
+                  <h3 className="mt-5 px-1 text-lg font-bold tracking-tight text-foreground md:text-xl">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <p className="mt-2 px-1 pb-2 text-sm leading-relaxed text-muted-foreground md:text-base">
                     {item.description}
                   </p>
                 </motion.article>
@@ -334,6 +372,11 @@ export default function TradingHomePage() {
             </div>
           </div>
         </section>
+
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
 
         {/* ─── Video Showcase — Kera Look ─── */}
         <section className="relative overflow-hidden bg-neutral-50/60 py-16 md:py-24">
@@ -391,6 +434,11 @@ export default function TradingHomePage() {
           </div>
         </section>
 
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
+
         {/* What partners can expect — icon cards, gradient band */}
         <section className="relative overflow-hidden bg-gradient-to-b from-white via-neutral-50/90 to-neutral-50 py-16 md:py-24">
           <div
@@ -431,9 +479,9 @@ export default function TradingHomePage() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-40px" }}
                     variants={fadeInUp}
-                    className="group relative rounded-2xl bg-white/90 p-6 shadow-[0_12px_40px_rgba(7,13,26,0.06)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(7,13,26,0.1)] md:p-7"
+                    className="group relative overflow-hidden rounded-[2rem] glass-card-light p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)] md:p-7"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#C9873B]/18 to-[#C9873B]/5 text-[#C9873B] ring-1 ring-[#C9873B]/15 transition group-hover:from-[#C9873B]/25 group-hover:to-[#C9873B]/8">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${item.accentBg} ${item.accent}`}>
                       <Icon
                         className="h-6 w-6"
                         strokeWidth={1.65}
@@ -453,45 +501,68 @@ export default function TradingHomePage() {
           </div>
         </section>
 
-        {/* Testimonials — static grid, not marquee (distinct from professional) */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-shell">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9873B]">
+        {/* ── Colorful divider ── */}
+        <div className="container-shell py-2">
+          <div className="section-divider-gradient" />
+        </div>
+
+        {/* ─── Testimonials — dark animated background with glass cards ─── */}
+        <section className="hero-mesh-bg relative overflow-hidden py-16 md:py-24">
+          {/* Subtle orb accents */}
+          <div className="orb orb-teal w-[300px] h-[300px] top-0 left-1/4 z-0" style={{ animationDelay: "2s" }} />
+          <div className="orb orb-amber w-[250px] h-[250px] bottom-0 right-1/4 z-0" style={{ animationDelay: "6s" }} />
+
+          <div className="container-shell relative z-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-teal">
                 Partner feedback
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight md:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
                 Hear from trading partners
               </h2>
+              <p className="mt-4 text-base text-white/60 md:text-lg">
+                Feedback from distribution and channel partnerships across our trading network.
+              </p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {landingTestimonials.map((item) => (
-                <article
-                  key={item.author}
-                  className="flex flex-col rounded-2xl bg-neutral-50/50 p-6 shadow-[0_8px_30px_rgba(7,13,26,0.06)]"
-                >
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3.5 w-3.5 fill-[#C9873B] text-[#C9873B]"
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-4 text-sm font-semibold">{item.author}</p>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {item.quote}
-                  </p>
-                  <p className="mt-6 text-xs font-medium text-neutral-400">
-                    {item.date}
-                  </p>
-                </article>
-              ))}
+
+            <div className="relative mt-10 overflow-hidden">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#070d1a] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#070d1a] to-transparent" />
+
+              <motion.div
+                initial={{ x: "0%" }}
+                animate={{ x: "-50%" }}
+                transition={{ duration: 34, ease: "linear", repeat: Infinity }}
+                className="flex w-max gap-4"
+              >
+                {marqueeTestimonials.map((item, idx) => (
+                  <article
+                    key={`${item.author}-${item.date}-${idx}`}
+                    className="w-[300px] glass-card p-6 md:w-[360px]"
+                  >
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, starIdx) => (
+                          <Star
+                            key={`${item.author}-star-${starIdx}-${idx}`}
+                            className="h-4 w-4 fill-accent-amber text-accent-amber"
+                          />
+                        ))}
+                      </div>
+                      <span className="text-xs font-medium text-white/40">{item.date}</span>
+                    </div>
+                    <p className="text-sm font-semibold text-white">{item.author}</p>
+                    <p className="mt-3 text-base leading-7 text-white/70">{item.quote}</p>
+                    <p className="mt-6 text-sm font-semibold text-white/50">Trading partnership</p>
+                  </article>
+                ))}
+              </motion.div>
             </div>
-            <div className="mt-10 text-center">
+
+            <div className="mt-8 text-center">
               <Link
                 href="/trading/partners"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-4 hover:text-[#C9873B] hover:underline"
+                className="btn-3d-secondary-dark inline-flex items-center gap-2 border border-white/10 glass-card px-6 py-3 text-sm text-white hover:border-accent-teal/40 hover:text-accent-teal"
               >
                 Full partnership details
                 <ArrowRight className="h-4 w-4" />
@@ -523,7 +594,7 @@ export default function TradingHomePage() {
         {/* Light CTA — Capital-style closing block */}
         <section className="bg-neutral-50 px-4 pb-16 pt-4 md:px-6">
           <div className="container-shell">
-            <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(7,13,26,0.08)] md:grid md:grid-cols-2 md:rounded-[2.5rem]">
+            <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(7,13,26,0.08)] gradient-border md:grid md:grid-cols-2 md:rounded-[2.5rem]">
               <div className="relative min-h-[240px] md:min-h-[360px]">
                 <Image
                   src="/trading/cta-partners.jpg"
