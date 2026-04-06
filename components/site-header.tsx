@@ -10,15 +10,15 @@ function CurlyMenuIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="menu-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="var(--accent-teal)" />
-          <stop offset="50%" stopColor="var(--accent-purple)" />
-          <stop offset="100%" stopColor="var(--accent-rose)" />
+        <linearGradient id="curly-menu-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#0EA5E9" />
+          <stop offset="50%" stopColor="#8B5CF6" />
+          <stop offset="100%" stopColor="#F43F5E" />
         </linearGradient>
       </defs>
-      <path d="M3 7 C6 5.5, 9 8.5, 12 7 C15 5.5, 18 8.5, 21 7" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M3 12 C6 10.5, 9 13.5, 12 12 C15 10.5, 18 13.5, 21 12" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M3 17 C6 15.5, 9 18.5, 12 17 C15 15.5, 18 18.5, 21 17" stroke="url(#menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M3 7 C6 5.5, 9 8.5, 12 7 C15 5.5, 18 8.5, 21 7" stroke="url(#curly-menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M3 12 C6 10.5, 9 13.5, 12 12 C15 10.5, 18 13.5, 21 12" stroke="url(#curly-menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M3 17 C6 15.5, 9 18.5, 12 17 C15 15.5, 18 18.5, 21 17" stroke="url(#curly-menu-grad)" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -27,14 +27,14 @@ function ColorfulXIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="x-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="var(--accent-rose)" />
-          <stop offset="50%" stopColor="var(--accent-purple)" />
-          <stop offset="100%" stopColor="var(--accent-teal)" />
+        <linearGradient id="colorful-x-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#F43F5E" />
+          <stop offset="50%" stopColor="#8B5CF6" />
+          <stop offset="100%" stopColor="#0EA5E9" />
         </linearGradient>
       </defs>
-      <path d="M6 6 C9 9, 15 15, 18 18" stroke="url(#x-grad)" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M18 6 C15 9, 9 15, 6 18" stroke="url(#x-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M6 6 C9 9, 15 15, 18 18" stroke="url(#colorful-x-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M18 6 C15 9, 9 15, 6 18" stroke="url(#colorful-x-grad)" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
