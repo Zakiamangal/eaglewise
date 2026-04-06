@@ -4,7 +4,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ── Light Theme ── */
 :root {
   --background: #f5f7fb;
   --foreground: #070d1a;
@@ -21,63 +20,6 @@ html {
   --accent-rose: #F43F5E;
   --accent-amber: #F59E0B;
   --accent-emerald: #10B981;
-}
-
-/* ── Dark Theme (default) ── */
-[data-theme="dark"] {
-  --background: #08080D;
-  --foreground: #F0ECE2;
-  --muted-foreground: #8A8578;
-  --surface: #111118;
-  --surface-alt: #18182A;
-  --primary: #D4AF37;
-  --primary-foreground: #08080D;
-  --secondary: #060609;
-  --secondary-foreground: #F0ECE2;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent-teal: #22D3EE;
-  --accent-purple: #A78BFA;
-  --accent-rose: #FB7185;
-  --accent-amber: #FBBF24;
-  --accent-emerald: #34D399;
-}
-
-/* Smooth theme transitions */
-body,
-.soft-card,
-.eagle-card,
-.glass-card-light,
-header,
-footer {
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Dark mode glass card overrides */
-[data-theme="dark"] .glass-card-light {
-  background: rgba(17, 17, 24, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .soft-card {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .eagle-card {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .eagle-card:hover {
-  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.06);
-}
-
-/* Dark animated background */
-[data-theme="dark"] .animated-bg {
-  background: linear-gradient(135deg, #08080D 0%, #111118 25%, #1A1420 50%, #111118 75%, #08080D 100%);
-  background-size: 400% 400%;
 }
 
 /* ── 3D Perspective Grid (hero floor effect) ── */
@@ -99,40 +41,9 @@ footer {
   z-index: 0;
 }
 
-[data-theme="light"] .hero-3d-grid {
-  opacity: 0.25;
-}
-
 @keyframes gridScroll {
   0% { background-position: 0 0; }
   100% { background-position: 0 80px; }
-}
-
-/* ── Theme Toggle Button ── */
-.theme-toggle-btn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 9999;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.08);
-  transition: all 0.4s ease;
-  color: var(--primary);
-}
-
-.theme-toggle-btn:hover {
-  transform: scale(1.12) rotate(15deg);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.15);
 }
 
 /* ── Enhanced 3D card transforms ── */
