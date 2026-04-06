@@ -162,7 +162,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#C9873B]/30 bg-surface text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_16px_rgba(201,135,59,0.3)] hover:scale-105 lg:hidden"
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#C9873B]/30 bg-surface text-[#C9873B] transition-all duration-300 hover:bg-[#C9873B]/10 hover:shadow-[0_0_16px_rgba(201,135,59,0.3)] hover:scale-105 lg:hidden ${mobileOpen ? "relative z-[110]" : ""}`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
