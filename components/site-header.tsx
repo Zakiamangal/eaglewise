@@ -103,7 +103,7 @@ export function SiteHeader() {
 
                   <div className="absolute inset-x-0 top-full h-5" />
 
-                  <div className={`nav-dropdown-${accent} pointer-events-none absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 translate-y-2 rounded-[1.6rem] border border-border/60 bg-surface/95 p-6 opacity-0 shadow-[0_16px_40px_rgba(7,13,26,0.12)] backdrop-blur-sm transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100`}>
+                  <div className={`nav-dropdown-${accent} pointer-events-none absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 translate-y-2 rounded-[1.6rem] border border-white/40 bg-white/90 p-6 opacity-0 backdrop-blur-xl transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100`}>
                     <div className="mb-4 flex items-center justify-between">
                       <p className="text-xl font-semibold text-foreground">{item.label}</p>
                       <Link
