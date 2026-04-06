@@ -8,7 +8,7 @@ import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { khanNaseriProductHighlights } from "@/lib/khan-naseri-trading";
-import { Sparkles, Store, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, Store, Globe } from "lucide-react";
 
 const heroSlides = [
   { src: "/products/kera-look-range.jpg", alt: "Kera Look — full Hair Repair System product range" },
@@ -68,10 +68,6 @@ export default function TradingProductsPage() {
     setSlideIdx((prev) => (prev + 1) % heroSlides.length);
   }, []);
 
-  const prevSlide = useCallback(() => {
-    setSlideIdx((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  }, []);
-
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
@@ -98,7 +94,7 @@ export default function TradingProductsPage() {
                   alt={heroSlides[slideIdx].alt}
                   fill
                   priority={slideIdx === 0}
-                  className="object-cover object-center"
+                  className="object-contain object-center"
                   sizes="100vw"
                 />
               </motion.div>
@@ -107,22 +103,6 @@ export default function TradingProductsPage() {
             {/* Overlay gradients — lighter to show product images */}
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 via-secondary/55 to-secondary/15" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-secondary/15 to-transparent md:hidden" />
-
-            {/* Nav arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 shadow-lg backdrop-blur-sm transition hover:bg-white/40 hover:scale-110 sm:left-5 sm:h-12 sm:w-12"
-              aria-label="Previous product"
-            >
-              <ChevronLeft className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 shadow-lg backdrop-blur-sm transition hover:bg-white/40 hover:scale-110 sm:right-5 sm:h-12 sm:w-12"
-              aria-label="Next product"
-            >
-              <ChevronRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-            </button>
 
             {/* Text overlay */}
             <div className="absolute inset-0 flex items-end md:items-center">
@@ -155,21 +135,6 @@ export default function TradingProductsPage() {
               </div>
             </div>
 
-            {/* Dot indicators at bottom */}
-            <div className="absolute bottom-4 left-0 right-0 z-20 flex items-center justify-center gap-2 md:bottom-6">
-              {heroSlides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSlideIdx(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    idx === slideIdx
-                      ? "w-8 bg-[#C9873B]"
-                      : "w-2.5 bg-white/50 hover:bg-white/80"
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </section>
 
