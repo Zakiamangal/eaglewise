@@ -226,24 +226,25 @@ export default function TradingProductsPage() {
         >
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image src="/trading/3.jpg" alt="Shavele SkinCare brand" fill className="object-cover" />
+              <Image src="/trading/3.jpg" alt="Shavele SkinCare brand" fill loading="lazy" className="object-cover" />
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image src="/trading/4.jpg" alt="Shavele serum bottle" fill className="object-cover" />
+              <Image src="/trading/4.jpg" alt="Shavele serum bottle" fill loading="lazy" className="object-cover" />
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image src="/trading/5.jpg" alt="Shavele moisturizer cream" fill className="object-cover" />
+              <Image src="/trading/5.jpg" alt="Shavele moisturizer cream" fill loading="lazy" className="object-cover" />
             </div>
           </div>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-              <Image src="/trading/2.jpg" alt="Shavele branding and packaging" fill className="object-cover" />
+              <Image src="/trading/2.jpg" alt="Shavele branding and packaging" fill loading="lazy" className="object-cover" />
             </div>
             <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
               <Image
                 src="/trading/IMG_0354.jpg"
                 alt="Shavele Face Moisturizer product"
                 fill
+                loading="lazy"
                 className="object-cover"
               />
             </div>
