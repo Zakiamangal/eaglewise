@@ -10,6 +10,14 @@ import { getSiteMode, modeConfig, navMenusByMode } from "@/lib/site";
 /** Each nav position gets a distinct accent color for hover effects. */
 const navAccentColors = ["teal", "amber", "emerald", "purple", "rose"] as const;
 
+const mobileAccentStyles: Record<string, { color: string; bg: string; border: string; glow: string }> = {
+  teal: { color: "rgb(14, 165, 233)", bg: "rgba(14, 165, 233, 0.08)", border: "rgba(14, 165, 233, 0.4)", glow: "0 0 12px rgba(14, 165, 233, 0.2)" },
+  amber: { color: "rgb(245, 158, 11)", bg: "rgba(245, 158, 11, 0.08)", border: "rgba(245, 158, 11, 0.4)", glow: "0 0 12px rgba(245, 158, 11, 0.2)" },
+  emerald: { color: "rgb(16, 185, 129)", bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.4)", glow: "0 0 12px rgba(16, 185, 129, 0.2)" },
+  purple: { color: "rgb(139, 92, 246)", bg: "rgba(139, 92, 246, 0.08)", border: "rgba(139, 92, 246, 0.4)", glow: "0 0 12px rgba(139, 92, 246, 0.2)" },
+  rose: { color: "rgb(244, 63, 94)", bg: "rgba(244, 63, 94, 0.08)", border: "rgba(244, 63, 94, 0.4)", glow: "0 0 12px rgba(244, 63, 94, 0.2)" },
+};
+
 export function SiteHeader() {
   const pathname = usePathname();
   const mode = getSiteMode(pathname);
@@ -212,23 +220,29 @@ export function SiteHeader() {
                   const expanded = mobileExpandedHref === item.href;
                   const mobileAccent = navAccentColors[idx % navAccentColors.length];
 
+                  const accentStyle = mobileAccentStyles[mobileAccent] ?? mobileAccentStyles.teal;
+
                   return (
-                    <div key={item.href} className="border-b border-border/60 py-2 last:border-b-0">
+                    <div key={item.href} className="py-2 last:border-b-0" style={{ borderBottom: `1px solid ${accentStyle.border.replace("0.4", "0.15")}` }}>
                       {hasSubmenu ? (
                         <>
                           <div className="flex min-h-[44px] items-stretch gap-1">
                             <Link
                               href={item.href}
                               onClick={closeMobile}
-                              className={`flex flex-1 items-center py-2 text-base font-semibold tracking-tight ${
-                                isActive ? "text-[#C9873B]" : "text-foreground"
-                              }`}
+                              className="flex flex-1 items-center py-2 text-base font-semibold tracking-tight transition-colors duration-200"
+                              style={{ color: isActive ? accentStyle.color : undefined }}
                             >
                               {item.label}
                             </Link>
                             <button
                               type="button"
-                              className="inline-flex w-11 shrink-0 items-center justify-center rounded-lg text-foreground transition hover:bg-surface-alt"
+                              className="inline-flex w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-200"
+                              style={{
+                                color: expanded ? accentStyle.color : undefined,
+                                background: expanded ? accentStyle.bg : undefined,
+                                boxShadow: expanded ? accentStyle.glow : undefined,
+                              }}
                               aria-expanded={expanded}
                               aria-controls={`mobile-submenu-${item.href.replace(/\//g, "-")}`}
                               id={`mobile-menu-trigger-${item.href.replace(/\//g, "-")}`}
@@ -248,16 +262,28 @@ export function SiteHeader() {
                               id={`mobile-submenu-${item.href.replace(/\//g, "-")}`}
                               role="region"
                               aria-labelledby={`mobile-menu-trigger-${item.href.replace(/\//g, "-")}`}
-                              className="mt-1 flex flex-col gap-2 border-l-2 border-[#C9873B]/25 pl-3"
+                              className="mt-1 flex flex-col gap-1.5 pl-3"
+                              style={{ borderLeft: `2.5px solid ${accentStyle.border}` }}
                             >
                               {menuItems.map((menuItem) => (
                                 <Link
                                   key={`${item.href}-${menuItem.href}-${menuItem.label}`}
                                   href={menuItem.href}
                                   onClick={closeMobile}
-                                  className={`nav-menu-item nav-menu-item-${mobileAccent} block rounded-lg py-2 pl-2 pr-1`}
+                                  className="block rounded-xl py-2.5 pl-3 pr-2 transition-all duration-200"
+                                  style={{}}
+                                  onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = accentStyle.bg;
+                                    e.currentTarget.style.boxShadow = accentStyle.glow;
+                                    e.currentTarget.style.transform = "translateX(4px)";
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = "";
+                                    e.currentTarget.style.boxShadow = "";
+                                    e.currentTarget.style.transform = "";
+                                  }}
                                 >
-                                  <span className="nav-menu-label text-sm font-medium text-foreground">{menuItem.label}</span>
+                                  <span className="text-sm font-medium" style={{ color: accentStyle.color }}>{menuItem.label}</span>
                                   <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
                                     {menuItem.description}
                                   </span>
@@ -266,7 +292,8 @@ export function SiteHeader() {
                               <Link
                                 href={item.href}
                                 onClick={closeMobile}
-                                className="inline-flex items-center gap-1 py-2 pl-2 text-sm font-semibold text-[#C9873B]"
+                                className="inline-flex items-center gap-1 py-2 pl-3 text-sm font-semibold transition-all duration-200"
+                                style={{ color: accentStyle.color }}
                               >
                                 View all {item.label}
                                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -278,9 +305,18 @@ export function SiteHeader() {
                         <Link
                           href={item.href}
                           onClick={closeMobile}
-                          className={`flex min-h-[44px] items-center py-2 text-base font-semibold tracking-tight ${
-                            isActive ? "text-[#C9873B]" : "text-foreground"
-                          }`}
+                          className="flex min-h-[44px] items-center rounded-xl py-2 px-2 text-base font-semibold tracking-tight transition-all duration-200"
+                          style={{ color: isActive ? accentStyle.color : undefined }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = accentStyle.bg;
+                            e.currentTarget.style.boxShadow = accentStyle.glow;
+                            e.currentTarget.style.color = accentStyle.color;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = "";
+                            e.currentTarget.style.boxShadow = "";
+                            e.currentTarget.style.color = isActive ? accentStyle.color : "";
+                          }}
                         >
                           {item.label}
                         </Link>
