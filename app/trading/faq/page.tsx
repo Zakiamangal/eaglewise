@@ -45,6 +45,10 @@ export default function TradingFaqPage() {
           title="Trading & partnerships"
           subtitle="Answers aligned with our corporate profile: sourcing, exports, marketplaces, and regional partners."
         />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
         <Section
           id="faq-list"
           className="bg-white"
@@ -54,7 +58,7 @@ export default function TradingFaqPage() {
         >
           <div className="space-y-4 md:space-y-5">
             {faqs.map((item) => (
-              <article key={item.question} className="eagle-card p-6 md:p-7">
+              <article key={item.question} className="glass-card-light card-3d-hover p-6 md:p-7">
                 <div className="flex items-center gap-3">
                   <HelpCircle className="h-5 w-5 shrink-0 text-[#C9873B]" />
                   <h3 className="text-lg font-bold tracking-tight">{item.question}</h3>
