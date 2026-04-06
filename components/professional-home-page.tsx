@@ -125,6 +125,8 @@ export default function ProfessionalHomePage() {
       {/* ─── HERO ─── */}
       <section className="pb-0 pt-0">
         <div className="relative overflow-hidden hero-mesh-bg">
+          {/* 3D perspective grid floor */}
+          <div className="hero-3d-grid" />
           {/* Floating orbs behind hero content */}
           <div className="orb orb-teal w-[400px] h-[400px] -top-32 -left-20 z-0" />
           <div className="orb orb-purple w-[350px] h-[350px] top-1/2 right-0 z-0" style={{ animationDelay: "4s" }} />
