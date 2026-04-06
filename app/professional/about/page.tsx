@@ -51,6 +51,10 @@ export default function ProfessionalAboutPage() {
         title="Who we are"
         subtitle="Eaglewise Business Consultancy LLC-FZ provides professional services to businesses in the UAE and international markets, with integrity, transparency, and a focus on sustainable growth."
       />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section
         id="about-overview"
         className="bg-white"
@@ -58,7 +62,7 @@ export default function ProfessionalAboutPage() {
         title="UAE-based consultancy with a clear mandate"
         description="Established in March 2025, Eaglewise Business Consultancy LLC-FZ combines general trading, e-commerce, and professional consultancy under one UAE-registered group."
       >
-        <div className="eagle-card rounded-3xl p-7 md:p-10">
+        <div className="glass-card-light rounded-3xl p-7 md:p-10">
           <p className="text-base leading-8 text-muted-foreground">
             The company was formed to bridge opportunities between international suppliers and regional markets,
             particularly across the Middle East and Central Asia. Through strategic partnerships and professional
@@ -71,9 +75,12 @@ export default function ProfessionalAboutPage() {
         </div>
       </Section>
 
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section id="vision-mission" className="bg-neutral-50/80" title="Vision & Mission">
         <div className="grid gap-5 md:grid-cols-2 md:gap-6">
-          <article className="eagle-card p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-teal-purple p-6 md:p-7">
             <div className="mb-3 flex items-center gap-3">
               <Compass className="h-5 w-5 text-[#C9873B]" />
               <h3 className="text-2xl font-semibold">Vision</h3>
@@ -84,7 +91,7 @@ export default function ProfessionalAboutPage() {
             </p>
           </article>
 
-          <article className="eagle-card p-6 md:p-7">
+          <article className="glass-card-light card-3d-hover card-stripe-amber-rose p-6 md:p-7">
             <div className="mb-3 flex items-center gap-3">
               <ClipboardList className="h-5 w-5 text-[#C9873B]" />
               <h3 className="text-2xl font-semibold">Mission</h3>
@@ -98,8 +105,11 @@ export default function ProfessionalAboutPage() {
         </div>
       </Section>
 
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section id="ceo-message" className="bg-white" title="CEO Message">
-        <article className="eagle-card p-6 md:p-8">
+        <article className="eagle-card gradient-border p-6 md:p-8">
           <p className="text-base leading-8 text-muted-foreground">
             At Eaglewise Business Consultancy LLC-FZ, our vision is to create a company that delivers both high-quality
             products and professional business services while building strong and lasting partnerships across
@@ -119,10 +129,19 @@ export default function ProfessionalAboutPage() {
         </article>
       </Section>
 
-      <Section id="company-values" className="bg-neutral-50/80" title="Company Values">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {values.map(({ title, Icon, description }) => (
-            <article key={title} className="eagle-card p-5 md:p-6">
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
+      <Section id="company-values" className="relative overflow-hidden bg-neutral-50/80" title="Company Values">
+        <div className="pointer-events-none absolute -top-20 -right-20 z-0">
+          <div className="orb orb-teal w-[300px] h-[300px]" />
+        </div>
+        <div className="pointer-events-none absolute bottom-0 -left-20 z-0">
+          <div className="orb orb-purple w-[250px] h-[250px]" style={{ animationDelay: "4s" }} />
+        </div>
+        <div className="relative z-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {values.map(({ title, Icon, description }, idx) => (
+            <article key={title} className={`glass-card-light card-3d-hover ${["card-stripe-teal-purple","card-stripe-amber-rose","card-stripe-emerald-teal"][idx % 3]} p-5 md:p-6`}>
               <div className="flex items-center gap-3">
                 <Icon className="h-5 w-5 shrink-0 text-[#C9873B]" />
                 <h3 className="text-lg font-semibold">{title}</h3>
@@ -132,6 +151,9 @@ export default function ProfessionalAboutPage() {
           ))}
         </div>
       </Section>
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
 
       <CtaStrip
         id="about-cta"
