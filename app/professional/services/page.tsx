@@ -61,6 +61,9 @@ export default function ProfessionalServicesPage() {
         subtitle="Accounting, audit, tax, and advisory services for businesses in the UAE and international markets."
       />
 
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section
         id="professional-services"
         className="bg-white pb-20 pt-16 md:pb-32 md:pt-24"
@@ -81,7 +84,7 @@ export default function ProfessionalServicesPage() {
                 {cat.services.map((srv) => (
                   <article
                     key={srv.title}
-                    className="group rounded-3xl border border-border/50 bg-neutral-50/50 p-6 transition-all hover:border-[#C9873B]/30 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] md:p-8"
+                    className="glass-card-light card-3d-hover group rounded-3xl p-6 transition-all md:p-8"
                   >
                     <srv.Icon className="mb-5 h-6 w-6 text-[#C9873B] transition-transform group-hover:scale-110" />
                     <h3 className="text-lg font-semibold leading-snug">{srv.title}</h3>
@@ -95,6 +98,9 @@ export default function ProfessionalServicesPage() {
           ))}
         </div>
       </Section>
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
 
       <section className="border-t border-border/40 bg-neutral-50/50 py-16 md:py-24">
         <div className="container-shell">
@@ -120,7 +126,7 @@ export default function ProfessionalServicesPage() {
                 { step: "02", title: "Service Scope & Plan", desc: "We define scope, responsibilities, and timelines across accounting, compliance, and advisory workstreams." },
                 { step: "03", title: "Implementation Support", desc: "We support execution with regular follow-up, clear reporting, and practical adjustments when needed." }
               ].map((item, i) => (
-                <div key={i} className="flex flex-col gap-5 rounded-3xl border border-border/50 bg-white p-7 shadow-sm transition-shadow hover:shadow-md sm:flex-row md:p-9">
+                <div key={i} className="glass-card-light card-3d-hover flex flex-col gap-5 rounded-3xl p-7 sm:flex-row md:p-9">
                   <div className="text-3xl font-light text-muted-foreground/30 md:text-4xl">{item.step}</div>
                   <div>
                     <h3 className="text-xl font-bold">{item.title}</h3>
@@ -132,6 +138,9 @@ export default function ProfessionalServicesPage() {
           </div>
         </div>
       </section>
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
 
       <CtaStrip
         id="request-consultation"
