@@ -43,6 +43,10 @@ export default function ProfessionalFaqPage() {
         title="Frequently asked questions"
         subtitle="Straight answers on services, clients, and how to engage with Eaglewise."
       />
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
+
       <Section
         id="faq-list"
         className="bg-white"
@@ -52,7 +56,7 @@ export default function ProfessionalFaqPage() {
       >
         <div className="space-y-4 md:space-y-5">
           {faqs.map((item) => (
-            <article key={item.question} className="eagle-card p-6 md:p-7">
+            <article key={item.question} className="glass-card-light card-3d-hover p-6 md:p-7">
               <div className="flex items-center gap-3">
                 <HelpCircle className="h-5 w-5 text-[#C9873B]" />
                 <h3 className="text-lg font-semibold">{item.question}</h3>
@@ -62,6 +66,9 @@ export default function ProfessionalFaqPage() {
           ))}
         </div>
       </Section>
+
+        {/* Divider */}
+        <div className="container-shell py-2"><div className="section-divider-gradient" /></div>
 
       <CtaStrip
         id="faq-cta"
