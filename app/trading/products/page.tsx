@@ -8,7 +8,7 @@ import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { khanNaseriImages } from "@/lib/khan-naseri-trading";
-import { Sparkles, Store, Globe } from "lucide-react";
+import { Sparkles, Store, Globe, ArrowRight } from "lucide-react";
 
 const heroSlides = [
   { src: "/products/kera-look-range.jpg", alt: "Kera Look — full Hair Repair System product range" },
