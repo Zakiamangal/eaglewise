@@ -22,6 +22,22 @@ function CurlyMenuIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+function ColorfulXIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="x-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="var(--accent-rose)" />
+          <stop offset="50%" stopColor="var(--accent-purple)" />
+          <stop offset="100%" stopColor="var(--accent-teal)" />
+        </linearGradient>
+      </defs>
+      <path d="M6 6 C9 9, 15 15, 18 18" stroke="url(#x-grad)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M18 6 C15 9, 9 15, 6 18" stroke="url(#x-grad)" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+}
 import { getSiteMode, modeConfig, navMenusByMode } from "@/lib/site";
 
 /** Each nav position gets a distinct accent color for hover effects. */
@@ -80,7 +96,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+      className={`sticky top-0 border-b transition-all duration-300 ${mobileOpen ? "z-[105]" : "z-50"} ${
         scrolled
           ? "border-border/70 bg-surface shadow-[0_1px_8px_rgba(7,13,26,0.06)]"
           : "border-transparent bg-surface/95 backdrop-blur-sm"
@@ -185,7 +201,7 @@ export function SiteHeader() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? <X className="h-5 w-5" strokeWidth={2} /> : <CurlyMenuIcon className="h-6 w-6" />}
+            {mobileOpen ? <ColorfulXIcon className="h-6 w-6" /> : <CurlyMenuIcon className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -208,11 +224,11 @@ export function SiteHeader() {
               <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#C9873B]">Menu</p>
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-surface-alt"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#C9873B]/30 transition hover:bg-[#C9873B]/10"
                 aria-label="Close menu"
                 onClick={closeMobile}
               >
-                <X className="h-5 w-5" />
+                <ColorfulXIcon className="h-5 w-5" />
               </button>
             </div>
 
