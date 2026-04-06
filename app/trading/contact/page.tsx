@@ -6,6 +6,7 @@ import { companyInfo } from "@/lib/site";
 import { Mail, MapPin, Phone, Globe, Send } from "lucide-react";
 import { LinkedinIcon } from "@/components/linkedin-icon";
 
+/** Trading contact page with inquiry form and company details. */
 export default function TradingContactPage() {
   return (
     <SiteShell>
