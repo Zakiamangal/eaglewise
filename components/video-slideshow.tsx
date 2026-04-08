@@ -2,23 +2,15 @@
 
 export default function VideoSlideshow() {
   return (
-    <div
-      style={{
-        perspective: "1000px",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <div
         style={{
           width: "100%",
-          maxWidth: "56rem",
+          maxWidth: "28rem",
           borderRadius: "1rem",
           overflow: "hidden",
-          background: "#000",
-          boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-          transform: "rotateX(1deg)",
-          transformStyle: "preserve-3d",
+          boxShadow:
+            "0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,135,59,0.1)",
         }}
       >
         <video
@@ -29,9 +21,7 @@ export default function VideoSlideshow() {
           preload="auto"
           style={{
             width: "100%",
-            aspectRatio: "16/9",
             display: "block",
-            background: "#000",
           }}
         >
           <source src="/videos/showcase-all.mp4" type="video/mp4" />
