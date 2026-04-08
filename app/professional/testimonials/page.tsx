@@ -47,7 +47,7 @@ export default function ProfessionalTestimonialsPage() {
 
     let raf: number;
     const step = () => {
-      track.scrollLeft += 0.6;
+      track.scrollLeft += 0.2;
       // Reset to middle when reaching end of first set
       const oneThird = track.scrollWidth / 3;
       if (track.scrollLeft >= oneThird * 2) {
