@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 
 const videos = [
   { id: "1rH3K_qdN-0h8IDvSPIfIERF968XUHxqW", name: "005" },
@@ -20,35 +19,67 @@ const videos = [
 
 export default function VideoSlideshow() {
   const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(true);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c === videos.length - 1 ? 0 : c + 1));
-    }, 30000);
-    return () => clearInterval(timer);
-  }, [current]);
+    timerRef.current = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrent((c) => (c + 1) % videos.length);
+        setFade(true);
+      }, 600);
+    }, 5000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
 
   const video = videos[current];
 
   return (
-    <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl md:rounded-3xl">
-      <AnimatePresence mode="wait">
-        <motion.div
+    <div
+      style={{
+        perspective: "1200px",
+        display: "flex",
+        justifyContent: "center",
+        padding: "2rem 0",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "56rem",
+          borderRadius: "1.5rem",
+          overflow: "hidden",
+          background: "#000",
+          boxShadow:
+            "0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(201,135,59,0.08)",
+          transform: fade
+            ? "rotateY(0deg) rotateX(0deg) scale(1)"
+            : "rotateY(3deg) rotateX(2deg) scale(0.97)",
+          opacity: fade ? 1 : 0,
+          transition:
+            "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s cubic-bezier(0.4,0,0.2,1)",
+          transformStyle: "preserve-3d" as const,
+        }}
+      >
+        <iframe
           key={video.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <iframe
-            src={`https://drive.google.com/file/d/${video.id}/preview`}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            className="aspect-video w-full bg-black"
-            title={video.name}
-          />
-        </motion.div>
-      </AnimatePresence>
+          src={`https://drive.google.com/file/d/${video.id}/preview`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          style={{
+            width: "100%",
+            aspectRatio: "16/9",
+            display: "block",
+            border: "none",
+            background: "#000",
+          }}
+          title={video.name}
+        />
+      </div>
     </div>
   );
 }
