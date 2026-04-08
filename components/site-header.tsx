@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ChevronDown, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, X, Menu } from "lucide-react";
 
 function CurlyMenuIcon({ className }: { className?: string }) {
   return (
@@ -203,7 +203,7 @@ export function SiteHeader() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={(e) => { e.stopPropagation(); setMobileOpen((o) => !o); }}
           >
-            {mobileOpen ? <ColorfulXIcon className="h-6 w-6" /> : <CurlyMenuIcon className="h-6 w-6" />}
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -232,7 +232,7 @@ export function SiteHeader() {
                 aria-label="Close menu"
                 onClick={closeMobile}
               >
-                <ColorfulXIcon className="h-5 w-5" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
