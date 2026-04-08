@@ -55,6 +55,7 @@ export function KhanNaseriShowcase() {
                   src={item.src}
                   alt={item.alt}
                   fill
+                  loading="eager"
                   className="object-cover transition duration-300 group-hover:scale-[1.02]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />

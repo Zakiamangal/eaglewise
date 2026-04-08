@@ -307,6 +307,7 @@ export default function TradingHomePage() {
                     src={block.image}
                     alt={block.imageAlt}
                     fill
+                    loading="eager"
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
@@ -358,6 +359,7 @@ export default function TradingHomePage() {
                       src={item.image}
                       alt={item.imageAlt}
                       fill
+                      loading="eager"
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
