@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const videos = [
   "/videos/showcase/005.mp4",
@@ -17,38 +17,25 @@ const videos = [
 
 export default function VideoSlideshow() {
   const [current, setCurrent] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [visible, setVisible] = useState(true);
 
   const goNext = useCallback(() => {
-    setIsTransitioning(true);
+    setVisible(false);
     setTimeout(() => {
       setCurrent((c) => (c + 1) % videos.length);
-      setIsTransitioning(false);
+      setVisible(true);
     }, 500);
   }, []);
 
-  /* Auto‑advance every 10 s */
   useEffect(() => {
-    timerRef.current = setTimeout(goNext, 10000);
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
+    const id = setTimeout(goNext, 10000);
+    return () => clearTimeout(id);
   }, [current, goNext]);
-
-  /* Play the video as soon as it loads */
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.load();
-    v.play().catch(() => {});
-  }, [current]);
 
   return (
     <div
       style={{
-        perspective: "1200px",
+        perspective: "1000px",
         display: "flex",
         justifyContent: "center",
       }}
@@ -57,30 +44,27 @@ export default function VideoSlideshow() {
         style={{
           width: "100%",
           maxWidth: "56rem",
-          borderRadius: "1.25rem",
+          borderRadius: "1rem",
           overflow: "hidden",
           background: "#000",
-          boxShadow:
-            "0 25px 60px rgba(0,0,0,0.45), 0 0 30px rgba(201,135,59,0.06)",
-          transform: isTransitioning
-            ? "rotateY(2deg) rotateX(1deg) scale(0.98)"
-            : "rotateY(0deg) rotateX(0deg) scale(1)",
-          opacity: isTransitioning ? 0 : 1,
-          transition:
-            "transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1)",
-          transformStyle: "preserve-3d" as const,
+          boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+          transform: visible
+            ? "rotateY(0deg) scale(1)"
+            : "rotateY(3deg) scale(0.97)",
+          opacity: visible ? 1 : 0,
+          transition: "transform 0.5s ease, opacity 0.5s ease",
         }}
       >
         <video
-          ref={videoRef}
+          key={current}
           autoPlay
           muted
           playsInline
+          preload="auto"
           style={{
             width: "100%",
             aspectRatio: "16/9",
             display: "block",
-            objectFit: "cover",
             background: "#000",
           }}
         >
