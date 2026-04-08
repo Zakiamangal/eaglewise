@@ -201,7 +201,7 @@ export function SiteHeader() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileOpen((o) => !o)}
+            onClick={(e) => { e.stopPropagation(); setMobileOpen((o) => !o); }}
           >
             {mobileOpen ? <ColorfulXIcon className="h-6 w-6" /> : <CurlyMenuIcon className="h-6 w-6" />}
           </button>
@@ -214,12 +214,14 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
+          onClick={(e) => e.stopPropagation()}
         >
           <button
             type="button"
-            className="absolute inset-0 bg-black/45 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-black/45 backdrop-blur-[2px] animate-[fadeIn_0.15s_ease]"
             aria-label="Close menu"
             onClick={closeMobile}
+            style={{ animationFillMode: "backwards", pointerEvents: "auto" }}
           />
           <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-surface shadow-[0_0_40px_rgba(7,13,26,0.15)]">
             <div className="flex items-center justify-between border-b border-border/80 px-4 py-4">
