@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { SiteShell } from "@/components/site-shell";
+import VideoSlideshow from "@/components/video-slideshow";
 import {
   ArrowRight,
   Award,
@@ -405,27 +406,15 @@ export default function TradingHomePage() {
               </p>
             </motion.div>
 
-            {/* Featured video */}
+            {/* Video slideshow — 12 product videos from Google Drive */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeInUp}
-              className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)] md:rounded-3xl"
+              className="mt-12"
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-                preload="auto"
-                poster="/videos/keralook-poster.png"
-                className="aspect-video w-full rounded-2xl bg-surface md:rounded-3xl"
-              >
-                <source src="/videos/keralook.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <VideoSlideshow />
             </motion.div>
           </div>
         </section>
