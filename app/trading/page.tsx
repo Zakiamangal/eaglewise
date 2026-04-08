@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { SiteShell } from "@/components/site-shell";
+import VideoSlideshow from "@/components/video-slideshow";
 import {
   ArrowRight,
   Award,
@@ -362,31 +363,15 @@ export default function TradingHomePage() {
               </p>
             </motion.div>
 
-            {/* Featured video */}
+            {/* Video slideshow — 12 product videos from Google Drive */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeInUp}
-              className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl gradient-border shadow-[0_20px_60px_rgba(7,13,26,0.1)] md:rounded-3xl"
+              className="mt-12"
             >
-              <video
-                controls
-                preload="metadata"
-                poster="/videos/keralook-poster.png"
-                className="aspect-video w-full bg-black"
-              >
-                <source src="/videos/keralook.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 pointer-events-none md:p-6">
-                <div className="flex items-center gap-2">
-                  <Play className="h-4 w-4 text-white/80" />
-                  <p className="text-sm font-semibold text-white">
-                    Kera Look — Product Showcase by Khan Naseri Trading
-                  </p>
-                </div>
-              </div>
+              <VideoSlideshow />
             </motion.div>
           </div>
         </section>
