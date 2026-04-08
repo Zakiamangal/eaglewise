@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
 import { SubpageHero } from "@/components/subpage-hero";
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -30,60 +30,9 @@ const testimonials = [
 
 const stripeClasses = ["card-stripe-teal-purple", "card-stripe-amber-rose", "card-stripe-emerald-teal"];
 
-// Triple the cards for seamless infinite scroll
-const marqueeCards = [...testimonials, ...testimonials, ...testimonials];
+const marqueeCards = [...testimonials, ...testimonials];
 
 export default function ProfessionalTestimonialsPage() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef(0);
-  const scrollStartX = useRef(0);
-
-  // Auto-scroll marquee
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track || paused) return;
-
-    let raf: number;
-    const step = () => {
-      track.scrollLeft += 0.2;
-      // Reset to middle when reaching end of first set
-      const oneThird = track.scrollWidth / 3;
-      if (track.scrollLeft >= oneThird * 2) {
-        track.scrollLeft -= oneThird;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [paused]);
-
-  // Start scrolled to the middle set
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollLeft = track.scrollWidth / 3;
-  }, []);
-
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    setIsDragging(true);
-    setPaused(true);
-    dragStartX.current = e.clientX;
-    scrollStartX.current = trackRef.current?.scrollLeft ?? 0;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  }, []);
-
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging || !trackRef.current) return;
-    const dx = e.clientX - dragStartX.current;
-    trackRef.current.scrollLeft = scrollStartX.current - dx;
-  }, [isDragging]);
-
-  const onPointerUp = useCallback(() => {
-    setIsDragging(false);
-    setPaused(false);
-  }, []);
 
   return (
     <SiteShell>
@@ -116,41 +65,37 @@ export default function ProfessionalTestimonialsPage() {
             </p>
           </div>
 
-          <div
-            ref={trackRef}
-            className="flex gap-5 overflow-x-hidden select-none"
-            style={{ cursor: isDragging ? "grabbing" : "grab" }}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => { if (!isDragging) setPaused(false); }}
-          >
-            {marqueeCards.map((item, i) => (
-              <article
-                key={`${item.author}-${i}`}
-                className={`glass-card-light card-3d-hover ${stripeClasses[i % 3]} shrink-0 w-[320px] p-6 md:w-[380px] md:p-7`}
-                style={{ borderRadius: '1.5rem', overflow: 'hidden' }}
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <Star
-                        key={`${item.author}-${i}-star-${idx}`}
-                        className="h-4 w-4 fill-[#C9873B] text-[#C9873B]"
-                      />
-                    ))}
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ x: "0%" }}
+              animate={{ x: "-50%" }}
+              transition={{ duration: 80, ease: "linear", repeat: Infinity }}
+              className="flex w-max gap-5"
+            >
+              {marqueeCards.map((item, i) => (
+                <article
+                  key={`${item.author}-${i}`}
+                  className={`glass-card-light card-3d-hover ${stripeClasses[i % 3]} shrink-0 w-[320px] p-6 md:w-[380px] md:p-7`}
+                  style={{ borderRadius: '1.5rem', overflow: 'hidden' }}
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <Star
+                          key={`${item.author}-${i}-star-${idx}`}
+                          className="h-4 w-4 fill-[#C9873B] text-[#C9873B]"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-xs font-medium text-muted-foreground">{item.context}</span>
                   </div>
-                  <span className="text-xs font-medium text-muted-foreground">{item.context}</span>
-                </div>
-                <p className="text-sm font-semibold text-foreground">{item.author}</p>
-                <p className="mt-3 text-base leading-7 text-muted-foreground">{item.quote}</p>
-                <p className="mt-6 text-sm font-semibold text-foreground">Advisory engagement</p>
-              </article>
-            ))}
+                  <p className="text-sm font-semibold text-foreground">{item.author}</p>
+                  <p className="mt-3 text-base leading-7 text-muted-foreground">{item.quote}</p>
+                  <p className="mt-6 text-sm font-semibold text-foreground">Advisory engagement</p>
+                </article>
+              ))}
+            </motion.div>
           </div>
-          <p className="mt-6 text-center text-xs text-muted-foreground">Drag to browse or hover to pause</p>
         </div>
       </section>
 
