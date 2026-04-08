@@ -522,7 +522,7 @@ export default function ProfessionalHomePage() {
             <motion.div
               initial={{ x: "0%" }}
               animate={{ x: "-50%" }}
-              transition={{ duration: 34, ease: "linear", repeat: Infinity }}
+              transition={{ duration: 80, ease: "linear", repeat: Infinity }}
               className="flex w-max gap-5"
             >
               {marqueeTestimonials.map((item, idx) => (

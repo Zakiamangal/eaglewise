@@ -499,7 +499,7 @@ a {
 }
 
 .nav-marquee-inner {
-  animation: navMarqueeScroll 12s linear infinite;
+  animation: navMarqueeScroll 28s linear infinite;
 }
 
 .nav-marquee-inner:hover {
