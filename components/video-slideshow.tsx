@@ -1,42 +1,49 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const videos = [
-  { id: "1rH3K_qdN-0h8IDvSPIfIERF968XUHxqW", name: "005" },
-  { id: "1cFUjHd2LiGoHhKvZ5zDk4FGGSuPKK4LX", name: "Product Reel" },
-  { id: "1q4JOOrQVCO4Z7eYfKlIfbSEfWmn0vLVu", name: "006" },
-  { id: "1g3AqXWhjSAmQ5NFuxiIP4CV4opjbfYBT", name: "011 (a)" },
-  { id: "1GQHl8zY2KVb3a8Zv8KcjPJzynqEZZw-Q", name: "011 (b)" },
-  { id: "1lDubst95adjMkhEbSX_0j_IjxzTnSS2f", name: "0056 (a)" },
-  { id: "1PvjDWgg-I34J1rr1w-681vrFyPsGm8Bg", name: "0056 (b)" },
-  { id: "100FH2miJEVITDWXv-OHUWD5AwPyS9wjH", name: "Oud Intense" },
-  { id: "1iS4BNJkJ6bERkog_YYDkPlDnTsOaHyC2", name: "Reel 04" },
-  { id: "1z3c8iLZd6yWTqH_qJESR43aXE4dcx-rH", name: "VID-20251218" },
-  { id: "1HN--ZHRqjPa9E5mwg58ZmYQDvysbvMBX", name: "Vitamin C" },
-  { id: "1qwDJCmh5jCnMwIUBBnZJsze6Cnntwwo9", name: "Wicked Noir" },
+  "/videos/showcase/005.mp4",
+  "/videos/showcase/product-reel.mp4",
+  "/videos/showcase/006.mp4",
+  "/videos/showcase/011.mp4",
+  "/videos/showcase/0056.mp4",
+  "/videos/showcase/oud-intense.mp4",
+  "/videos/showcase/reel-04.mp4",
+  "/videos/showcase/vid-20251218.mp4",
+  "/videos/showcase/vitamin-c.mp4",
+  "/videos/showcase/wicked-noir.mp4",
 ];
 
 export default function VideoSlideshow() {
   const [current, setCurrent] = useState(0);
-  const [fade, setFade] = useState(true);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setCurrent((c) => (c + 1) % videos.length);
-        setFade(true);
-      }, 600);
-    }, 5000);
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+  const goNext = useCallback(() => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrent((c) => (c + 1) % videos.length);
+      setIsTransitioning(false);
+    }, 500);
   }, []);
 
-  const video = videos[current];
+  /* Auto‑advance every 10 s */
+  useEffect(() => {
+    timerRef.current = setTimeout(goNext, 10000);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [current, goNext]);
+
+  /* Play the video as soon as it loads */
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.load();
+    v.play().catch(() => {});
+  }, [current]);
 
   return (
     <div
@@ -44,41 +51,41 @@ export default function VideoSlideshow() {
         perspective: "1200px",
         display: "flex",
         justifyContent: "center",
-        padding: "2rem 0",
       }}
     >
       <div
         style={{
           width: "100%",
           maxWidth: "56rem",
-          borderRadius: "1.5rem",
+          borderRadius: "1.25rem",
           overflow: "hidden",
           background: "#000",
           boxShadow:
-            "0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(201,135,59,0.08)",
-          transform: fade
-            ? "rotateY(0deg) rotateX(0deg) scale(1)"
-            : "rotateY(3deg) rotateX(2deg) scale(0.97)",
-          opacity: fade ? 1 : 0,
+            "0 25px 60px rgba(0,0,0,0.45), 0 0 30px rgba(201,135,59,0.06)",
+          transform: isTransitioning
+            ? "rotateY(2deg) rotateX(1deg) scale(0.98)"
+            : "rotateY(0deg) rotateX(0deg) scale(1)",
+          opacity: isTransitioning ? 0 : 1,
           transition:
-            "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s cubic-bezier(0.4,0,0.2,1)",
+            "transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1)",
           transformStyle: "preserve-3d" as const,
         }}
       >
-        <iframe
-          key={video.id}
-          src={`https://drive.google.com/file/d/${video.id}/preview`}
-          allow="autoplay; encrypted-media"
-          allowFullScreen
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
           style={{
             width: "100%",
             aspectRatio: "16/9",
             display: "block",
-            border: "none",
+            objectFit: "cover",
             background: "#000",
           }}
-          title={video.name}
-        />
+        >
+          <source src={videos[current]} type="video/mp4" />
+        </video>
       </div>
     </div>
   );
