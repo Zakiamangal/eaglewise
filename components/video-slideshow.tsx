@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 export default function VideoSlideshow() {
   const [muted, setMuted] = useState(true);
@@ -14,18 +15,8 @@ export default function VideoSlideshow() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "28rem",
-          borderRadius: "1rem",
-          overflow: "hidden",
-          boxShadow:
-            "0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,135,59,0.1)",
-        }}
-      >
+    <div className="flex justify-center">
+      <div className="relative w-full max-w-md overflow-hidden rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
         <video
           ref={videoRef}
           autoPlay
@@ -33,10 +24,7 @@ export default function VideoSlideshow() {
           loop
           playsInline
           preload="auto"
-          style={{
-            width: "100%",
-            display: "block",
-          }}
+          className="block w-full"
         >
           <source src="/videos/showcase-all.mp4" type="video/mp4" />
         </video>
@@ -44,26 +32,13 @@ export default function VideoSlideshow() {
         <button
           onClick={toggleMute}
           aria-label={muted ? "Unmute" : "Mute"}
-          style={{
-            position: "absolute",
-            bottom: "0.75rem",
-            right: "0.75rem",
-            width: "2.5rem",
-            height: "2.5rem",
-            borderRadius: "50%",
-            border: "none",
-            background: "rgba(0,0,0,0.5)",
-            backdropFilter: "blur(8px)",
-            color: "#fff",
-            fontSize: "1.1rem",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "background 0.2s",
-          }}
+          className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md transition-all hover:bg-black/80 hover:scale-110"
         >
-          {muted ? "\u{1F507}" : "\u{1F50A}"}
+          {muted ? (
+            <VolumeX className="h-5 w-5" />
+          ) : (
+            <Volume2 className="h-5 w-5" />
+          )}
         </button>
       </div>
     </div>
