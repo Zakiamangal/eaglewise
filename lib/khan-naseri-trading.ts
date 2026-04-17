@@ -292,3 +292,40 @@ export const khanNaseriProductHighlights: readonly KhanNaseriImage[] = productHi
   if (!found) throw new Error(`Missing Khan Naseri image: ${src}`);
   return found;
 });
+
+/** My Perfume — all fragrance and perfume product images. */
+const myPerfumeSrcs = [
+  "/khan-naseri-trading-co/1.jpg",
+  "/khan-naseri-trading-co/2.jpg",
+  "/khan-naseri-trading-co/3.jpg",
+  "/khan-naseri-trading-co/7.jpg",
+  "/khan-naseri-trading-co/10.jpg",
+  "/khan-naseri-trading-co/24.jpg",
+  "/khan-naseri-trading-co/25.jpg",
+  "/khan-naseri-trading-co/26.jpg",
+  "/khan-naseri-trading-co/27.jpg",
+  "/khan-naseri-trading-co/28.jpg",
+  "/khan-naseri-trading-co/29.jpg",
+  "/khan-naseri-trading-co/30.jpg",
+  "/khan-naseri-trading-co/31.jpg",
+  "/khan-naseri-trading-co/32.jpg",
+  "/khan-naseri-trading-co/33.jpg",
+  "/khan-naseri-trading-co/34.jpg",
+  "/khan-naseri-trading-co/36.jpg",
+  "/khan-naseri-trading-co/37.jpg",
+  "/khan-naseri-trading-co/38.jpg",
+  "/khan-naseri-trading-co/39.jpg",
+  "/khan-naseri-trading-co/40.jpg",
+  "/khan-naseri-trading-co/41.jpg",
+] as const;
+
+export const myPerfumeImages: readonly KhanNaseriImage[] = myPerfumeSrcs.map((src) => {
+  const found = khanNaseriImages.find((i) => i.src === src);
+  if (!found) throw new Error(`Missing My Perfume image: ${src}`);
+  return found;
+});
+
+/** Featured image for the My Perfume card on the products page. */
+export const myPerfumeFeatured: KhanNaseriImage = khanNaseriImages.find(
+  (i) => i.src === "/khan-naseri-trading-co/34.jpg",
+)!;

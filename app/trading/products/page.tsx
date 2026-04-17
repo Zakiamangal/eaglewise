@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CtaStrip } from "@/components/cta-strip";
 import { Section } from "@/components/section";
 import { SiteShell } from "@/components/site-shell";
-import { khanNaseriImages } from "@/lib/khan-naseri-trading";
+import { khanNaseriImages, myPerfumeFeatured } from "@/lib/khan-naseri-trading";
 import { Sparkles, Store, Globe, ArrowRight } from "lucide-react";
 
 const heroSlides = [
@@ -175,6 +175,32 @@ export default function TradingProductsPage() {
             These products are exported to Afghanistan through Khan Naseri Trading Company, which manages wholesale
             distribution across all 34 provinces.
           </p>
+        </Section>
+
+        <Section
+          id="my-perfume"
+          className="bg-neutral-50/80"
+          eyebrow="Featured brand"
+          title="My Perfume"
+          description="Fragrance and perfume products."
+        >
+          <Link href="/trading/products/my-perfume" className="group block max-w-sm">
+            <figure className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(7,13,26,0.06)] transition hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(7,13,26,0.1)]">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+                <Image
+                  src={myPerfumeFeatured.src}
+                  alt={myPerfumeFeatured.alt}
+                  fill
+                  className="object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+                  sizes="(max-width: 640px) 100vw, 384px"
+                />
+              </div>
+              <figcaption className="flex items-center justify-between px-4 py-3">
+                <span className="text-sm font-semibold text-foreground">View all perfumes</span>
+                <ArrowRight className="h-4 w-4 text-[#C9873B] transition group-hover:translate-x-1" />
+              </figcaption>
+            </figure>
+          </Link>
         </Section>
 
         <Section
